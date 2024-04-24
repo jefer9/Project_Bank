@@ -123,6 +123,7 @@ persona_1.eliminar_persona(id_persona)
 print(personas)
 
 #holaaaaa
+# hola de nuevo
 
 
 
