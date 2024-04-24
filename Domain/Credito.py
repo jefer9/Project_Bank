@@ -7,6 +7,8 @@ class Credito(Titular):
         self._plazo = plazo
         self._cantidad = cantidad
 
+    #hola soy david
+
 
     @property
     def plazo(self):
