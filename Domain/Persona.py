@@ -108,19 +108,23 @@ class Persona:
         else:
             print("persona no encontrada")
 
+    def __str__(self):
+        print = f"""
+        id: {self._id},
+        nombre: {self._nombre},
+        apellido: {self._apellido},
+        correo: {self._correo},
+        telefono: {self._telefono},
+        usuario: {self._usuario}
+        """
+
+
+#diccionario con las usuarios registrados
 personas= {}
 
 
-persona_1 = Persona(None,None,None,None,None,None)
-persona_2 = Persona(None,None,None,None,None,None)
 
-persona_1.crear_persona()
-persona_2.crear_persona()
 
-id_persona = input("eliminar id")
-persona_1.eliminar_persona(id_persona)
-
-print(personas)
 
 #holaaaaa
 # hola de nuevo
