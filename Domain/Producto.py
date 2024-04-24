@@ -13,4 +13,3 @@ class Producto(Titular):
     @id_producto.setter
     def id_producto(self, id_producto):
         self._id_producto = id_producto
-        
