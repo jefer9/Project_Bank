@@ -27,6 +27,7 @@ class App:
             persona1 = Persona(None, None, None, None, None, None)
             persona1.crear_persona()
             print(personas)
+            #actualizado
         if opcion == 2:
             print("ingreso de login")
 
