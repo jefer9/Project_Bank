@@ -1,11 +1,12 @@
 class Persona:
-    def __init__(self, id, nombre, apellido, correo, telefono, usuario):
+    def __init__(self, id, nombre, apellido, correo, telefono, usuario, contraseña):
         self._id = id
         self._nombre = nombre
         self._apellido = apellido
         self._correo = correo
         self._telefono = telefono
         self._usuario = usuario
+        self._contraseña = contraseña
 
     @property
     def id(self):
@@ -63,6 +64,7 @@ class Persona:
         self._correo = input("Correo: ")
         self._telefono = input("Telefono: ")
         self._usuario = input("Usuario: ")
+        self._contraseña = input("contraseña: ")
         print("Persona creada exitosamente")
 
         datos_persona = {"id": self._id,
@@ -70,11 +72,22 @@ class Persona:
                          "Apellido": self._apellido,
                          "Correo": self._correo,
                          "Telefono": self._telefono,
-                         "Usuario": self._usuario
+                         "Usuario": self._usuario,
+                         "Contraseña": self._contraseña
         }
 
         personas[datos_persona["id"]]= datos_persona
 
+    def autenticacion_login(self):
+        usuario = input("Ingresa Usuario: ")
+        contraseña = input("Ingresa la Clave: ")
+
+        for id, datos_persona in personas.items():
+            if datos_persona["Usuario"] == usuario and datos_persona["Contraseña"] == contraseña:
+                print("¡Bienvenido al banco!")
+                return True
+        print("Usuario y/o clave incorrecta")
+        return False
     def buscar_persona(self,id):
         if id in personas:
             print("Persona encontrada")
