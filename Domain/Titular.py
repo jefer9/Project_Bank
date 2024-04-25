@@ -20,11 +20,11 @@ class Titular(Persona):
 
     @producto.setter
     def producto(self, producto):
-        self.producto = _producto
+        self.producto = producto
 
     #creacion de metodos
 
-    def crear_persona(self, producto):
+    def crear_titular(self, producto):
         super().crear_persona()
         valor = int(input("Selecciona 1. Ahorros || 2. corriente"))
         self.producto = producto.productos[valor]
