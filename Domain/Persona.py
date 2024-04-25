@@ -77,7 +77,21 @@ class Persona:
         }
 
         personas[datos_persona["id"]]= datos_persona
+        # -------------------------------------------------------------------------------------------------
+        # LOGICA PARA IMPRIMIR BASE DE DATOS - ESTO NOS PUEDE SERVIR AL MOMENTO DE QUERER MOSTRAR LA BD
 
+        if not personas:
+            print("\nNo hay usuarios registrados")
+        else:
+            for id, datos_persona in personas.items():  # Itera sobre los elementos del diccionario personas
+                nombre = datos_persona["Nombre"]
+                apellido = datos_persona["Apellido"]
+                correo = datos_persona["Correo"]
+                telefono = datos_persona["Telefono"]
+                usuario = datos_persona["Usuario"]
+                print(
+                    f"Documento: {id} Nombre: {nombre} Apellido: {apellido} Correo: {correo} Telefono: {telefono} Usuario: {usuario}")
+        # -------------------------------------------------------------------------------------------------
     def autenticacion_login(self):
         usuario = input("Ingresa Usuario: ")
         contraseña = input("Ingresa la Clave: ")
@@ -113,6 +127,7 @@ class Persona:
             print("Datos actualizados exitosamente")
         else:
             print("Id no encontrado")
+
 
     def eliminar_persona(self, id):
         if id in personas:
