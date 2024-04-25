@@ -76,7 +76,7 @@ class Persona:
 
         personas[datos_persona["id"]]= datos_persona
         # -------------------------------------------------------------------------------------------------
-        # LOGICA PARA IMPRIMIR BASE DE DATOS
+        # LOGICA PARA IMPRIMIR BASE DE DATOS - ESTO NOS PUEDE SERVIR AL MOMENTO DE QUERER MOSTRAR LA BD
         if not personas:
             print("\nNo hay usuarios registrados")
         else:
