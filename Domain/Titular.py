@@ -1,8 +1,8 @@
-from Domain.Persona import Persona
+from Domain.Persona import Persona, personas
 
 class Titular(Persona):
-    def __init__(self, id, nombre, apellido, correo, telefono, usuario, producto, clave):
-        super().__init__(id,nombre, apellido, correo, telefono, usuario)
+    def __init__(self, id, nombre, apellido, correo, telefono, usuario, contraseña, producto, clave=5):
+        super().__init__(id, nombre, apellido, correo, telefono, usuario, contraseña)
         self._producto = producto
         self._clave = clave
 
@@ -20,20 +20,53 @@ class Titular(Persona):
 
     @producto.setter
     def producto(self, producto):
-        self.producto = producto
+        self._producto = producto
 
     #creacion de metodos
 
-    def crear_titular(self, producto):
+    """def crear_titular(self,):
         super().crear_persona()
         valor = int(input("Selecciona 1. Ahorros || 2. corriente"))
         self.producto = producto.productos[valor]
         self._clave = int(input("Ingresa la clave: "))
-        self.personas[self._id] = self.nombre, self.apellido, self.correo, self.telefono, self.usuario, self._clave, self.producto
+        self.personas[self._id] = self.nombre, self.apellido, self.correo, self.telefono, self.usuario, self._clave, self.producto"""
 
-    def __str__(self, producto):
-        print = f"""
-        {super().__str__()}
-        producto: {self.producto}
-    
-        """
+    def crear_titular(self):
+        print("Creación del producto")
+        producto = int(input("1. Cuenta de ahorros\n"
+                             "2. Cuenta corriente\n"
+                             "Selecciona el tipo de cuenta: "))
+
+        if producto == 1:
+            self.producto = "Cuenta de ahorros"
+            personas["Producto"] = self.producto
+        elif producto == 2:
+            self.producto = "Cuenta corriente"
+            personas["Producto"] = self.producto
+        else:
+            print("Opción no válida")
+
+        self._clave = input("Ingresa la clave: ")
+        personas["Clave"] = self._clave
+        print(personas)
+
+    def __str__(self):
+        return f"{super().__str__()} producto: {self.producto}"
+
+    def menu_titular(self):
+        while True:
+            print("Menu Titular")
+            print("Presiona alguna de las opciones")
+            opcion = int(input("1. Solicitar crédito\n"
+                               "2. Para crear producto\n"
+                               "3. Para salir del aplicativo"))
+
+            if opcion == 1:
+                print("Lógica para la solicitud del crédito")
+            elif opcion == 2:
+                self.crear_titular()
+            elif opcion == 3:
+                print("Gracias por visitar nuestro aplicativo")
+                break
+
+

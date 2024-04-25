@@ -1,4 +1,6 @@
-from Domain.Persona import Persona, personas
+from Domain.Persona import Persona
+
+from Domain.Titular import Titular
 
 class App:
 
@@ -12,12 +14,15 @@ class App:
             print("\n*************************************")
             print("***** FORMULARIO DE REGISTRO ********")
             print("*************************************")
-            persona1 = Persona(None, None, None, None, None, None, None)
+            persona1 = Persona(None, None, None, None,
+                               None, None, None)
             persona1.crear_persona()
-            print(personas)
 
         elif opcion == 2:
             persona1.autenticacion_login()
+            titular_1 = Titular(None, None,None,None,None,None,
+                                None,None)
+            titular_1.menu_titular()
         elif opcion == 3:
             print("Gracias por visitar nuestro banco")
             break
