@@ -65,15 +65,29 @@ class Persona:
         self._usuario = input("Usuario: ")
         print("Persona creada exitosamente")
 
-        datos_persona = {"id": self._id,
-                        "Nombre": self._nombre,
-                         "Apellido": self._apellido,
-                         "Correo": self._correo,
-                         "Telefono": self._telefono,
-                         "Usuario": self._usuario
-        }
+        datos_persona = {
+            "id": self._id,
+            "Nombre": self._nombre,
+            "Apellido": self._apellido,
+            "Correo": self._correo,
+            "Telefono": self._telefono,
+            "Usuario": self._usuario
+            }
 
         personas[datos_persona["id"]]= datos_persona
+        # -------------------------------------------------------------------------------------------------
+        # LOGICA PARA IMPRIMIR BASE DE DATOS
+        if not personas:
+            print("\nNo hay usuarios registrados")
+        else:
+            for id, datos_persona in personas.items():
+                nombre = datos_persona["Nombre"]
+                apellido = datos_persona["Apellido"]
+                correo = datos_persona["Correo"]
+                telefono = datos_persona["Telefono"]
+                usuario = datos_persona["Usuario"]
+                print(f"Documento: {id} Nombre: {nombre} Apellido: {apellido} Correo: {correo} Telefono: {telefono} Usuario: {usuario}")
+        # -------------------------------------------------------------------------------------------------
 
     def buscar_persona(self,id):
         if id in personas:

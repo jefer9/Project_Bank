@@ -1,6 +1,5 @@
 from Domain.Persona import Persona, personas
 
-
 class App:
 
     def autenticacion_login(self):
@@ -14,9 +13,12 @@ class App:
                 print("Usuario y/o clave incorrecta")
 
     while True:
-        opcion = int(input(f"Presiona 1 para registrarse en nuestro banco"
-                    f" \n presiona 2 para ingresar a tu cuenta"
-                    f"\n presiona 3 para salir de nuestro banco "))
+        print('\t\tHola soy tu asesor virtual\n')
+        print(f"Presiona:"
+                f"\n1 para registrarse en nuestro banco"
+                f"\n2 para ingresar a tu cuenta"
+                f"\n3 para ingresar como asesor ")
+        opcion = int(input('4 para salir '))
 
 
         if opcion == 1:
@@ -26,7 +28,6 @@ class App:
             print("*************************************")
             persona1 = Persona(None, None, None, None, None, None)
             persona1.crear_persona()
-            print(personas)
             #actualizado
         if opcion == 2:
             print("ingreso de login")
