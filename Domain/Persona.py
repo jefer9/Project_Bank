@@ -1,11 +1,10 @@
 class Persona:
-    def __init__(self, id, nombre, apellido, correo, telefono, usuario, contraseña):
+    def __init__(self, id, nombre, apellido, correo, telefono, contraseña):
         self._id = id
         self._nombre = nombre
         self._apellido = apellido
         self._correo = correo
         self._telefono = telefono
-        self._usuario = usuario
         self._contraseña = contraseña
 
     @property
@@ -49,12 +48,12 @@ class Persona:
         self._telefono = telefono
 
     @property
-    def usuario(self):
-        return self._usuario
+    def contraseña(self):
+        return self._contraseña
 
-    @usuario.setter
-    def usuario(self,_usuario):
-        self._usuario =_usuario
+    @contraseña.setter
+    def contraseña(self,contraseña):
+        self._contraseña = contraseña
 
     #en este metodo se debe verificar que no exista otro usuario con el mismo Id ni con el mismo nombre de usuario
     def crear_persona(self):
@@ -64,7 +63,6 @@ class Persona:
         self._apellido = input("Apellido: ")
         self._correo = input("Correo: ")
         self._telefono = input("Telefono: ")
-        self._usuario = input("Usuario: ")
         self._contraseña = input("contraseña: ")
         print("\n\t***Persona creada exitosamente!***")
 
@@ -73,7 +71,6 @@ class Persona:
                          "Apellido": self._apellido,
                          "Correo": self._correo,
                          "Telefono": self._telefono,
-                         "Usuario": self._usuario,
                          "Contraseña": self._contraseña
         }
 
@@ -97,14 +94,14 @@ class Persona:
 
 
     def autenticacion_login(self):
-        usuario = input("\nIngresa Usuario: ")
-        contraseña = input("Ingresa la Clave: ")
+        nombre = input("\nIngresa tu nombre: ")
+        contraseña = input("Ingresa la contraseña: ")
 
         for id, datos_persona in personas.items():
-            if datos_persona["Usuario"] == usuario and datos_persona["Contraseña"] == contraseña:
+            if datos_persona["Nombre"] == nombre and datos_persona["Contraseña"] == contraseña:
                 print("¡Bienvenido al banco!")
                 return True
-        print("Usuario y/o clave incorrecta")
+        print("Usuario y/o Contraseña incorrecta")
         return False
 
     def buscar_persona(self,id):
@@ -119,15 +116,12 @@ class Persona:
             print("Ingrese los datos que deseas modificar y/o oprima enter si desea dejarlos como estan")
             nuevo_correo = input("Correo: ")
             nuevo_telefono = input("Telefono: ")
-            nuevo_usuario = input("Usuario: ")
 
             #Verifica si los datos no estan vacios antes de actualizarlos
             if nuevo_correo:
                 personas[id]["Correo"] = nuevo_correo
             if nuevo_telefono:
                 personas[id]["Telefono"] = nuevo_telefono
-            if nuevo_usuario:
-                personas[id]["Usuario"] = nuevo_usuario
 
             print("Datos actualizados exitosamente")
         else:
@@ -148,7 +142,6 @@ class Persona:
         apellido: {self._apellido},
         correo: {self._correo},
         telefono: {self._telefono},
-        usuario: {self._usuario}
         """
         return print
 

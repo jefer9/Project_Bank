@@ -2,7 +2,12 @@ from Domain.Persona import Persona
 
 from Domain.Titular import Titular
 
+
 class App:
+    persona = Persona(None, None, None, None,
+                      None, None)
+    titular = Titular(None, None, None, None, None, None,
+                      None, None)
 
     #primer menu, inicia el programa, permite registrar un usuario y ingresar al sistema
     while True:
@@ -15,17 +20,13 @@ class App:
             print("\n\t*************************************")
             print("\t***** FORMULARIO DE REGISTRO ********")
             print("\t*************************************")
-            persona1 = Persona(None, None, None, None,
-                               None, None, None)
-            persona1.crear_persona()
+
+            persona.crear_persona()
 
         elif opcion == 2:
-            persona1.autenticacion_login()
-            titular_1 = Titular(None, None,None,None,None,None,
-                                None,None,None)
-            titular_1.menu_titular()
+            persona.autenticacion_login()
+
+            titular.menu_titular()
         elif opcion == 3:
             print("\n\tGracias por visitar nuestra sucursal virtual, hasta pronto!")
             break
-
-

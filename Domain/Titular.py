@@ -1,8 +1,8 @@
 from Domain.Persona import Persona, personas
 
 class Titular(Persona):
-    def __init__(self, id, nombre, apellido, correo, telefono, usuario, contraseña, producto, clave):
-        super().__init__(id, nombre, apellido, correo, telefono, usuario, contraseña)
+    def __init__(self, id, nombre, apellido, correo, telefono, contraseña, producto, clave):
+        super().__init__(id, nombre, apellido, correo, telefono, contraseña)
         self._producto = producto
         self._clave = clave
 
@@ -31,6 +31,7 @@ class Titular(Persona):
         self._clave = int(input("Ingresa la clave: "))
         self.personas[self._id] = self.nombre, self.apellido, self.correo, self.telefono, self.usuario, self._clave, self.producto"""
 
+    #esto lo debe hacer el asesor, aca se esta creando el producto, lo cual deberia hacer tambien el asesor
     def crear_titular(self):
         print("Creación del producto")
         producto = int(input("1. Cuenta de ahorros\n"
