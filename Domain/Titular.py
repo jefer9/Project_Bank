@@ -34,10 +34,10 @@ class Titular(Persona):
         self._clave = int(input("Ingresa la clave: "))
         self.personas[self._id] = self.nombre, self.apellido, self.correo, self.telefono, self.usuario, self._clave, self.producto"""
 
-    def crear_titular(self, datos_persona):
+    def crear_titular(self):
         super().crear_persona()
         self._clave = input("Ingresa la nueva clave: ")
-        datos_persona["Clave"] = self._clave
+        personas["Clave"] = self._clave
         # print(datos_persona)
 
     def __str__(self):

@@ -1,6 +1,6 @@
 class Persona:
 
-    def __init__(self, id, nombre, apellido, correo, telefono, usuario, contrasena):
+    def __init__(self, id, nombre, apellido, correo, telefono, usuario, contraseña):
 
         self._id = id
         self._nombre = nombre
@@ -8,7 +8,7 @@ class Persona:
         self._correo = correo
         self._telefono = telefono
         self._usuario = usuario
-        self._contrasena = contrasena
+        self._contraseña = contraseña
 
     @property
     def id(self):
@@ -55,7 +55,7 @@ class Persona:
         return self._contraseña
 
     @contraseña.setter
-    def contraseña(self,contraseña):
+    def contraseña(self, contraseña):
         self._contraseña = contraseña
 
     def crear_persona(self):
@@ -76,7 +76,7 @@ class Persona:
                          "Telefono": self._telefono,
                          "Usuario": self._usuario,
                          "Contraseña": self._contrasena
-        }
+                         }
 
         personas[datos_persona["id"]] = datos_persona
         # -------------------------------------------------------------------------------------------------
@@ -95,6 +95,7 @@ class Persona:
                 print(f'\n\t***Datos del usuario***\n')
                 print(f"Documento: {id} \nNombre: {nombre} \nApellido: {apellido} \nCorreo: {correo} \nTelefono: {telefono} \nUsuario: {usuario}")"""
         # -------------------------------------------------------------------------------------------------
+
     def autenticacion_login(self):
 
         usuario = input("\nIngresa el usuario: ")
@@ -106,14 +107,15 @@ class Persona:
                 return True
         print("Usuario y/o Contraseña incorrecta")
         return False
-    def buscar_persona(self,id):
+
+    def buscar_persona(self, id):
         if id in personas:
             print("Persona encontrada")
             print(personas[id])
         else:
             print("persona no encontrada")
 
-    def modificar_persona(self,id):
+    def modificar_persona(self, id):
         if id in personas:
             print("Ingrese los datos que deseas modificar y/o oprima enter si desea dejarlos como estan")
             nuevo_correo = input("Correo: ")
@@ -150,18 +152,6 @@ class Persona:
         """
         return print
 
+
 #diccionario con las usuarios registrados
-personas= {}
-
-
-
-
-
-
-
-
-
-
-
-
-
+personas = {}

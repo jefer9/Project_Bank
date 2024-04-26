@@ -1,16 +1,19 @@
 from Domain.Persona import Persona
 from Service.Asesor import Asesor
 from Domain.Titular import Titular
+from Domain.Producto import Producto
 
-class App(Titular):
+
+class App:
     persona = Persona(None, None, None, None,
-                       None, None, None)
+                      None, None, None)
     titular = Titular(None, None, None, None, None, None,
-                        None, None)
-    asesor = Asesor
+                      None, None, None)
+    producto = Producto(None,None)
+
 
     while True:
-        opcion = int(input("\nBienvenido a tu sucursal virtual\n"# MODIFIQUE ESTE MENU - JUEVES
+        opcion = int(input("\nBienvenido a tu sucursal virtual\n"  # MODIFIQUE ESTE MENU - JUEVES
                            "\n\t---------------\n"
                            "1 para registrarse en nuestro banco:\n"
                            "2 para ingresar a tu cuenta:\n"
@@ -21,7 +24,8 @@ class App(Titular):
             print("\t***** FORMULARIO DE REGISTRO ********")
             print("\t*************************************")
 
-            asesor.crear_titular(persona.obtener_datos_persona())
+            asesor = Asesor()
+            asesor.crear_titular()
 
         elif opcion == 2:
             if persona.autenticacion_login():
