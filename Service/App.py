@@ -6,7 +6,7 @@ class App(Titular):
 
     while True:
         opcion = int(input("\nBienvenido a tu sucursal virtual\n"# MODIFIQUE ESTE MENU - JUEVES
-                           "\n\tElige una de las opciones\n"
+                           "\n\t---------------\n"
                            "1 para registrarse en nuestro banco:\n"
                            "2 para ingresar a tu cuenta:\n"
                            "3 para salir de nuestro banco: "))
