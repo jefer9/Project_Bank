@@ -49,7 +49,7 @@ class Titular(Persona):
         self._clave = input("Ingresa la clave: ")
         datos_persona["Clave"] = self._clave
         # print(datos_persona)
-        # Agregue la logica para imprimir el diccionario con los nuevos datos obtenidos en este metodo y la informacion necesaria "creo yo"
+        # Agregue la logica para imprimir el diccionario con los nuevos datos obtenidos en este metodo y la informacion necesaria "creo yo!"
         print('\n\t***Datos del usuario***')
         print(
             f"\nTipo de cuenta: {datos_persona['Producto']} \nClave: {datos_persona['Clave']}\nNombre: {datos_persona['Nombre']} {datos_persona['Apellido']}\nDocumento: {datos_persona['id']}")

@@ -5,7 +5,7 @@ from Domain.Titular import Titular
 class App(Titular):
 
     while True:
-        opcion = int(input("\nBienvenido a tu sucursal virtual\n"
+        opcion = int(input("\nBienvenido a tu sucursal virtual\n"# MODIFIQUE ESTE MENU
                            "\n\tElige una de las opciones\n"
                            "1 para registrarse en nuestro banco:\n"
                            "2 para ingresar a tu cuenta:\n"
