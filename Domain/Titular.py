@@ -1,8 +1,8 @@
 from Domain.Persona import Persona, personas
 
 class Titular(Persona):
-    def __init__(self, id, nombre, apellido, correo, telefono, usuario, contrasena, producto, clave=5):
-        super().__init__(id, nombre, apellido, correo, telefono, usuario, contrasena)
+    def __init__(self, id, nombre, apellido, correo, telefono, usuario, contraseña, producto, clave=5):
+        super().__init__(id, nombre, apellido, correo, telefono, usuario, contraseña)
         self._producto = producto
 
         return nombre
@@ -31,44 +31,42 @@ class Titular(Persona):
         self._clave = int(input("Ingresa la clave: "))
         self.personas[self._id] = self.nombre, self.apellido, self.correo, self.telefono, self.usuario, self._clave, self.producto"""
 
-    def crear_titular(self, datos_persona):
-        print("\n\tCreación del producto")
-        producto = int(input("\nSelecciona el tipo de cuenta:\n"
-                             "1. Ahorros:\n"
-                             "2. Corriente: "))
+    def crear_titular(self):
+        print("Creación del producto")
+        producto = int(input("1. Cuenta de ahorros\n"
+                             "2. Cuenta corriente\n"
+                             "Selecciona el tipo de cuenta: "))
 
         if producto == 1:
-            self.producto = "Ahorros"
-            datos_persona["Producto"] = self.producto
+            self.producto = "Cuenta de ahorros"
+            personas["Producto"] = self.producto
         elif producto == 2:
-            self.producto = "Corriente"
-            datos_persona["Producto"] = self.producto
+            self.producto = "Cuenta corriente"
+            personas["Producto"] = self.producto
         else:
             print("Opción no válida")
 
         self._clave = input("Ingresa la clave: ")
-        datos_persona["Clave"] = self._clave
-        # print(datos_persona)
-        # Agregue la logica para imprimir el diccionario con los nuevos datos obtenidos en este metodo y la informacion necesaria "creo yo!"
-        print('\n\t***Datos del usuario***')
-        print(
-            f"\nTipo de cuenta: {datos_persona['Producto']} \nClave: {datos_persona['Clave']}\nNombre: {datos_persona['Nombre']} {datos_persona['Apellido']}\nDocumento: {datos_persona['id']}")
+        personas["Clave"] = self._clave
+        print(personas)
 
     def __str__(self):
         return f"{super().__str__()} producto: {self.producto}"
 
-    def menu_titular(self, datos_persona):
+
+
+    def menu_titular(self):
         while True:
             print("\n\tMenu Titular\n")
-            print(f"Hola {datos_persona['Nombre']} que deseas hacer hoy?")
-            opcion = int(input("\n1. Solicitar crédito:\n"
+            print(f"Hola {personas['Nombre']} presiona alguna de las opciones")
+            opcion = int(input("1. Solicitar crédito:\n"
                                "2. Para crear producto:\n"
                                "3. Para salir del aplicativo: "))
 
             if opcion == 1:
                 print("Lógica para la solicitud del crédito")
             elif opcion == 2:
-                self.crear_titular(datos_persona)# Le pase los datos de la persona como parametro
+                self.crear_titular()
             elif opcion == 3:
                 print("\n\tGracias por visitar nuestra sucursal virtual, hasta pronto!")
                 break
