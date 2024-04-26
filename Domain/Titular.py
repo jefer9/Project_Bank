@@ -1,4 +1,5 @@
 from Domain.Persona import Persona, personas
+from Domain.Credito import Credito
 
 class Titular(Persona):
 
@@ -68,7 +69,9 @@ class Titular(Persona):
                                "3. Para salir del aplicativo: "))
 
             if opcion == 1:
-                print("Lógica para la solicitud del crédito")
+                credito_1 = Credito(None,None,None)
+                credito_1.solicitar_credito(datos_persona)
+                #print(personas)
             elif opcion == 2:
                 self.crear_titular(datos_persona)# Le pase los datos de la persona como parametro
             elif opcion == 3:
