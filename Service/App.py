@@ -24,6 +24,8 @@ class App(Titular):
                 titular_1 = Titular(None, None, None, None, None, None,
                                     None, None)
                 titular_1.menu_titular(persona1.obtener_datos_persona())
+                #agregar menu despues de que inicie sesion correctamente
+
             else:
                 print("Autenticación fallida. Por favor, inténtelo de nuevo.")
         elif opcion == 3:

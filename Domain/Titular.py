@@ -35,27 +35,10 @@ class Titular(Persona):
 
 
     def crear_titular(self, datos_persona):
-        print("\n\tCreación del producto")
-        producto = int(input("\nSelecciona el tipo de cuenta:\n"
-                             "1. Ahorros:\n"
-                             "2. Corriente: "))
-
-        if producto == 1:
-            self.producto = "Ahorros"
-            datos_persona["Producto"] = self.producto
-        elif producto == 2:
-            self.producto = "Corriente"
-            datos_persona["Producto"] = self.producto
-        else:
-            print("Opción no válida")
-
+        super().crear_persona()
         self._clave = input("Ingresa la clave: ")
         datos_persona["Clave"] = self._clave
         # print(datos_persona)
-        # Agregue la logica para imprimir el diccionario con los nuevos datos obtenidos en este metodo y la informacion necesaria "creo yo!"
-        print('\n\t***Datos del producto***')
-        print(
-            f"\nTipo de cuenta: {datos_persona['Producto']} \nClave: {datos_persona['Clave']}\nNombre: {datos_persona['Nombre']} {datos_persona['Apellido']}\nDocumento: {datos_persona['id']}")
 
     def __str__(self):
         return f"{super().__str__()} producto: {self.producto}"
