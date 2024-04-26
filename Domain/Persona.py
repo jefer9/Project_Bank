@@ -158,6 +158,7 @@ class Persona:
         correo: {self._correo},
         telefono: {self._telefono},
         """
+        return print
 
 #diccionario con las usuarios registrados
 personas= {}

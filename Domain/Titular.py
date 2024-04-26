@@ -1,6 +1,7 @@
 from Domain.Persona import Persona, personas
 from Domain.Credito import Credito
 
+
 class Titular(Persona):
 
     def __init__(self, id, nombre, apellido, correo, telefono, usuario, contrasena, producto, clave=5):
@@ -33,10 +34,9 @@ class Titular(Persona):
         self._clave = int(input("Ingresa la clave: "))
         self.personas[self._id] = self.nombre, self.apellido, self.correo, self.telefono, self.usuario, self._clave, self.producto"""
 
-
     def crear_titular(self, datos_persona):
         super().crear_persona()
-        self._clave = input("Ingresa la clave: ")
+        self._clave = input("Ingresa la nueva clave: ")
         datos_persona["Clave"] = self._clave
         # print(datos_persona)
 
@@ -52,11 +52,11 @@ class Titular(Persona):
                                "3. Para salir del aplicativo: "))
 
             if opcion == 1:
-                credito_1 = Credito(None,None,None)
+                credito_1 = Credito(None, None, None)
                 credito_1.solicitar_credito(datos_persona)
                 #print(personas)
             elif opcion == 2:
-                self.crear_titular(datos_persona)# Le pase los datos de la persona como parametro
+                self.crear_titular(datos_persona)  # Le pase los datos de la persona como parametro
             elif opcion == 3:
                 print("\n\tGracias por visitar nuestra sucursal virtual, hasta pronto!")
                 break

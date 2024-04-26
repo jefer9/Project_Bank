@@ -33,14 +33,14 @@ class Producto:
                              "1. Ahorros:\n"
                              "2. Corriente: "))
 
-        if producto == 1:
+        """if producto == 1:
             self.producto = "Ahorros"
             datos_persona["Producto"] = self.producto
         elif producto == 2:
             self.producto = "Corriente"
             datos_persona["Producto"] = self.producto
         else:
-            print("Opción no válida")
+            print("Opción no válida")"""
 
     def mostrar_producto(self):
         for i in self.productos.items():

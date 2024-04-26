@@ -1,8 +1,12 @@
 from Domain.Persona import Persona
-
+from Service.Asesor import Asesor
 from Domain.Titular import Titular
 
 class App(Titular):
+    persona = Persona(None, None, None, None,
+                       None, None, None)
+    titular = Titular(None, None, None, None, None, None,
+                        None, None)
 
     while True:
         opcion = int(input("\nBienvenido a tu sucursal virtual\n"# MODIFIQUE ESTE MENU - JUEVES
@@ -15,15 +19,13 @@ class App(Titular):
             print("\n\t*************************************")
             print("\t***** FORMULARIO DE REGISTRO ********")
             print("\t*************************************")
-            persona1 = Persona(None, None, None, None,
-                               None, None, None)
-            persona1.crear_persona()
+
+            persona.crear_persona()
 
         elif opcion == 2:
-            if persona1.autenticacion_login():
-                titular_1 = Titular(None, None, None, None, None, None,
-                                    None, None)
-                titular_1.menu_titular(persona1.obtener_datos_persona())
+            if persona.autenticacion_login():
+
+                titular.menu_titular(persona.obtener_datos_persona())
                 #agregar menu despues de que inicie sesion correctamente
 
             else:
