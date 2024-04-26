@@ -7,6 +7,7 @@ class App(Titular):
                        None, None, None)
     titular = Titular(None, None, None, None, None, None,
                         None, None)
+    asesor = Asesor
 
     while True:
         opcion = int(input("\nBienvenido a tu sucursal virtual\n"# MODIFIQUE ESTE MENU - JUEVES
@@ -20,7 +21,7 @@ class App(Titular):
             print("\t***** FORMULARIO DE REGISTRO ********")
             print("\t*************************************")
 
-            persona.crear_persona()
+            asesor.crear_titular(persona.obtener_datos_persona())
 
         elif opcion == 2:
             if persona.autenticacion_login():

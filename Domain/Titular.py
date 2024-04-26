@@ -4,7 +4,7 @@ from Domain.Credito import Credito
 
 class Titular(Persona):
 
-    def __init__(self, id, nombre, apellido, correo, telefono, usuario, contrasena, producto, clave=5):
+    def __init__(self, id, nombre, apellido, correo, telefono, usuario, contrasena, producto, clave):
         super().__init__(id, nombre, apellido, correo, telefono, usuario, contrasena)
         self._producto = producto
         self._clave = clave
