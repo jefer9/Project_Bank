@@ -1,12 +1,12 @@
 class Persona:
-    def __init__(self, id, nombre, apellido, correo, telefono, usuario, contraseña):
+    def __init__(self, id, nombre, apellido, correo, telefono, usuario, contrasena):
         self._id = id
         self._nombre = nombre
         self._apellido = apellido
         self._correo = correo
         self._telefono = telefono
         self._usuario = usuario
-        self._contraseña = contraseña
+        self._contrasena = contrasena
 
     @property
     def id(self):
@@ -64,26 +64,26 @@ class Persona:
         self._correo = input("Correo: ")
         self._telefono = input("Telefono: ")
         self._usuario = input("Usuario: ")
-        self._contraseña = input("contraseña: ")
+        self._contrasena = input("contraseña: ")
         print("\n\t***Persona creada exitosamente!***")
 
         datos_persona = {"id": self._id,
-                        "Nombre": self._nombre,
+                         "Nombre": self._nombre,
                          "Apellido": self._apellido,
                          "Correo": self._correo,
                          "Telefono": self._telefono,
                          "Usuario": self._usuario,
-                         "Contraseña": self._contraseña
+                         "Contraseña": self._contrasena
         }
 
-        personas[datos_persona["id"]]= datos_persona
+        personas[datos_persona["id"]] = datos_persona
         # -------------------------------------------------------------------------------------------------
         # LOGICA PARA IMPRIMIR BASE DE DATOS - ESTO NOS PUEDE SERVIR AL MOMENTO DE QUERER MOSTRAR LA BD
 
         if not personas:
             print("\nNo hay usuarios registrados")
         else:
-            for id, datos_persona in personas.items():  # Itera sobre los elementos del diccionario personas
+            for id, datos_persona in personas.items():
                 nombre = datos_persona["Nombre"]
                 apellido = datos_persona["Apellido"]
                 correo = datos_persona["Correo"]
@@ -94,10 +94,10 @@ class Persona:
         # -------------------------------------------------------------------------------------------------
     def autenticacion_login(self):
         usuario = input("\nIngresa Usuario: ")
-        contraseña = input("Ingresa la Clave: ")
+        contrasena = input("Ingresa la Clave: ")
 
         for id, datos_persona in personas.items():
-            if datos_persona["Usuario"] == usuario and datos_persona["Contraseña"] == contraseña:
+            if datos_persona["Usuario"] == usuario and datos_persona["Contraseña"] == contrasena:
                 print("¡Bienvenido al banco!")
                 return True
         print("Usuario y/o clave incorrecta")
@@ -136,6 +136,18 @@ class Persona:
         else:
             print("persona no encontrada")
 
+    # Cree un nuevo metodo para retornar los datos
+    def obtener_datos_persona(self):
+        return {
+            "id": self._id,
+            "Nombre": self._nombre,
+            "Apellido": self._apellido,
+            "Correo": self._correo,
+            "Telefono": self._telefono,
+            "Usuario": self._usuario,
+            "Contraseña": self._contrasena
+        }
+
     def __str__(self):
         print = f"""
         id: {self._id},
@@ -145,7 +157,6 @@ class Persona:
         telefono: {self._telefono},
         usuario: {self._usuario}
         """
-
 
 #diccionario con las usuarios registrados
 personas= {}
