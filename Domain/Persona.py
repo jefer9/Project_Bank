@@ -99,7 +99,7 @@ class Persona:
     def autenticacion_login(self):
 
         usuario = input("\nIngresa el usuario: ")
-        contrasena = input("Ingresa la Clave: ")
+        contrasena = input("Ingresa la contraseña: ")
 
         for id, datos_persona in personas.items():
             if datos_persona["Usuario"] == usuario and datos_persona["Contraseña"] == contrasena:

@@ -1,7 +1,8 @@
-from Domain.Persona import Persona
+from Domain.Persona import Persona,personas
 from Service.Asesor import Asesor
 from Domain.Titular import Titular
 from Domain.Producto import Producto
+from Domain.Credito import Credito
 
 
 class App:
@@ -10,6 +11,7 @@ class App:
     titular = Titular(None, None, None, None, None, None,
                       None, None, None)
     producto = Producto(None,None)
+    asesor = Asesor()
 
 
     while True:
@@ -24,14 +26,28 @@ class App:
             print("\t***** FORMULARIO DE REGISTRO ********")
             print("\t*************************************")
 
-            asesor = Asesor()
+
             asesor.crear_titular()
 
         elif opcion == 2:
             if persona.autenticacion_login():
+                while True:
+                    print("\n\tMenu Titular\n")
+                    print(f"Hola que deseas hacer hoy?")
+                    opcion = int(input("\n1. Solicitar crédito:\n"
+                                       "2. Para crear producto:\n"
+                                       "3. Para salir del aplicativo: "))
 
-                titular.menu_titular(persona.obtener_datos_persona())
-                #agregar menu despues de que inicie sesion correctamente
+                    if opcion == 1:
+                        credito_1 = Credito(None, None, None)
+                        credito_1.solicitar_credito(personas)
+                        # print(personas)
+                    elif opcion == 2:
+                        asesor.crear_producto()  # Le pase los datos de la persona como parametro
+                    elif opcion == 3:
+                        print("\n\tGracias por visitar nuestra sucursal virtual, hasta pronto!")
+                        break
+
 
             else:
                 print("Autenticación fallida. Por favor, inténtelo de nuevo.")
