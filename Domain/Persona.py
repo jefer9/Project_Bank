@@ -2,7 +2,6 @@ class Persona:
 
     def __init__(self, id, nombre, apellido, correo, telefono, usuario, contrasena):
 
-
         self._id = id
         self._nombre = nombre
         self._apellido = apellido
@@ -130,7 +129,6 @@ class Persona:
         else:
             print("Id no encontrado")
 
-
     def eliminar_persona(self, id):
         if id in personas:
             personas.pop(id)
@@ -139,16 +137,8 @@ class Persona:
             print("persona no encontrada")
 
     # Cree un nuevo metodo para retornar los datos
-    def obtener_datos_persona(self):
-        return {
-            "id": self._id,
-            "Nombre": self._nombre,
-            "Apellido": self._apellido,
-            "Correo": self._correo,
-            "Telefono": self._telefono,
-            "Usuario": self._usuario,
-            "Contraseña": self._contrasena
-        }
+    def obtener_datos_persona(self, datos_persona):
+        return datos_persona
 
     def __str__(self):
         print = f"""
