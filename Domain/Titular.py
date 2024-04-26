@@ -1,11 +1,11 @@
 from Domain.Persona import Persona, personas
 
 class Titular(Persona):
-    def __init__(self, id, nombre, apellido, correo, telefono, usuario, contraseña, producto, clave=5):
+    def __init__(self, id, nombre, apellido, correo, telefono, usuario, contraseña, producto, clave):
         super().__init__(id, nombre, apellido, correo, telefono, usuario, contraseña)
         self._producto = producto
+        self._clave = clave
 
-        return nombre
     @property
     def clave(self):
         return self._clave
@@ -58,7 +58,7 @@ class Titular(Persona):
     def menu_titular(self):
         while True:
             print("\n\tMenu Titular\n")
-            print(f"Hola {personas['Nombre']} presiona alguna de las opciones")
+            print(f"Hola, presiona alguna de las opciones")
             opcion = int(input("1. Solicitar crédito:\n"
                                "2. Para crear producto:\n"
                                "3. Para salir del aplicativo: "))

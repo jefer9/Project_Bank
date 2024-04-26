@@ -56,6 +56,7 @@ class Persona:
     def usuario(self,_usuario):
         self._usuario =_usuario
 
+    #en este metodo se debe verificar que no exista otro usuario con el mismo Id ni con el mismo nombre de usuario
     def crear_persona(self):
         print("Ingresa los siguientes datos: ")
         self._id = input("ID: ")
@@ -79,8 +80,9 @@ class Persona:
         personas[datos_persona["id"]]= datos_persona
         # -------------------------------------------------------------------------------------------------
         # LOGICA PARA IMPRIMIR BASE DE DATOS - ESTO NOS PUEDE SERVIR AL MOMENTO DE QUERER MOSTRAR LA BD
+        #este codigo para mostrar deberia estar afuera del metodo crear personas
 
-        if not personas:
+        """if not personas:
             print("\nNo hay usuarios registrados")
         else:
             for id, datos_persona in personas.items():  # Itera sobre los elementos del diccionario personas
@@ -90,8 +92,10 @@ class Persona:
                 telefono = datos_persona["Telefono"]
                 usuario = datos_persona["Usuario"]
                 print(f'\n\t***Datos del usuario***\n')
-                print(f"Documento: {id} \nNombre: {nombre} \nApellido: {apellido} \nCorreo: {correo} \nTelefono: {telefono} \nUsuario: {usuario}")
+                print(f"Documento: {id} \nNombre: {nombre} \nApellido: {apellido} \nCorreo: {correo} \nTelefono: {telefono} \nUsuario: {usuario}")"""
         # -------------------------------------------------------------------------------------------------
+
+
     def autenticacion_login(self):
         usuario = input("\nIngresa Usuario: ")
         contraseña = input("Ingresa la Clave: ")
@@ -102,6 +106,7 @@ class Persona:
                 return True
         print("Usuario y/o clave incorrecta")
         return False
+
     def buscar_persona(self,id):
         if id in personas:
             print("Persona encontrada")
@@ -128,7 +133,6 @@ class Persona:
         else:
             print("Id no encontrado")
 
-
     def eliminar_persona(self, id):
         if id in personas:
             personas.pop(id)
@@ -136,6 +140,7 @@ class Persona:
         else:
             print("persona no encontrada")
 
+    #este metodo es para imprimir los datos del usuario
     def __str__(self):
         print = f"""
         id: {self._id},
@@ -145,6 +150,7 @@ class Persona:
         telefono: {self._telefono},
         usuario: {self._usuario}
         """
+        return print
 
 
 #diccionario con las usuarios registrados

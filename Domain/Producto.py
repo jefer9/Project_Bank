@@ -23,6 +23,7 @@ class Producto:
 
     productos = {}
 
+    #metodos propios
     def crear_producto(self):
         self._id_producto = int(input("id producto: "))
         self.nombre_producto = input("nombre producto: ")
@@ -31,3 +32,6 @@ class Producto:
     def mostrar_producto(self):
         for i in self.productos.items():
             print(i)
+
+
+

@@ -1,8 +1,8 @@
 from Domain.Producto import Producto
 
 class Cuenta_ahorros(Producto):
-    def __init__(self,nombre,apellido, id_producto, numero_cuenta, saldo):
-        super().__init__(nombre, apellido, id_producto)
+    def __init__(self, id_producto,nombre_producto, numero_cuenta, saldo, titular):
+        super().__init__( id_producto, nombre_producto)
         self.numero_cuenta = numero_cuenta
         self._saldo = saldo
 
@@ -13,3 +13,12 @@ class Cuenta_ahorros(Producto):
     @saldo.setter
     def saldo(self, saldo):
         self._saldo = saldo
+
+    @property
+    def numero_cuenta(self):
+        return self.numero_cuenta
+
+    @numero_cuenta.setter
+    def numero_cuenta(self, numero_cuenta):
+        self.numero_cuenta = numero_cuenta
+
