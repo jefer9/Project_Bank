@@ -4,8 +4,8 @@ class Titular(Persona):
     def __init__(self, id, nombre, apellido, correo, telefono, usuario, contraseña, producto, clave=5):
         super().__init__(id, nombre, apellido, correo, telefono, usuario, contraseña)
         self._producto = producto
-        self._clave = clave
 
+        return nombre
     @property
     def clave(self):
         return self._clave
@@ -53,20 +53,20 @@ class Titular(Persona):
     def __str__(self):
         return f"{super().__str__()} producto: {self.producto}"
 
+
+
     def menu_titular(self):
         while True:
-            print("Menu Titular")
-            print("Presiona alguna de las opciones")
-            opcion = int(input("1. Solicitar crédito\n"
-                               "2. Para crear producto\n"
-                               "3. Para salir del aplicativo"))
+            print("\n\tMenu Titular\n")
+            print(f"Hola {personas['Nombre']} presiona alguna de las opciones")
+            opcion = int(input("1. Solicitar crédito:\n"
+                               "2. Para crear producto:\n"
+                               "3. Para salir del aplicativo: "))
 
             if opcion == 1:
                 print("Lógica para la solicitud del crédito")
             elif opcion == 2:
                 self.crear_titular()
             elif opcion == 3:
-                print("Gracias por visitar nuestro aplicativo")
+                print("\n\tGracias por visitar nuestra sucursal virtual, hasta pronto!")
                 break
-
-

@@ -65,7 +65,7 @@ class Persona:
         self._telefono = input("Telefono: ")
         self._usuario = input("Usuario: ")
         self._contraseña = input("contraseña: ")
-        print("Persona creada exitosamente")
+        print("\n\t***Persona creada exitosamente!***")
 
         datos_persona = {"id": self._id,
                         "Nombre": self._nombre,
@@ -89,11 +89,11 @@ class Persona:
                 correo = datos_persona["Correo"]
                 telefono = datos_persona["Telefono"]
                 usuario = datos_persona["Usuario"]
-                print(
-                    f"Documento: {id} Nombre: {nombre} Apellido: {apellido} Correo: {correo} Telefono: {telefono} Usuario: {usuario}")
+                print(f'\n\t***Datos del usuario***\n')
+                print(f"Documento: {id} \nNombre: {nombre} \nApellido: {apellido} \nCorreo: {correo} \nTelefono: {telefono} \nUsuario: {usuario}")
         # -------------------------------------------------------------------------------------------------
     def autenticacion_login(self):
-        usuario = input("Ingresa Usuario: ")
+        usuario = input("\nIngresa Usuario: ")
         contraseña = input("Ingresa la Clave: ")
 
         for id, datos_persona in personas.items():

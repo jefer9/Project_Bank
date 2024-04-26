@@ -4,16 +4,16 @@ from Domain.Titular import Titular
 
 class App:
 
-
     while True:
-        opcion = int(input("Presiona 1 para registrarse en nuestro banco"
-                           "\nPresiona 2 para ingresar a tu cuenta"
+        opcion = int(input("\n\t Bienvenido a tu sucursal virtual\n"
+                           "\nPresiona 1 para registrarse en nuestro banco:"
+                           "\nPresiona 2 para ingresar a tu cuenta:"
                            "\nPresiona 3 para salir de nuestro banco: "))
 
         if opcion == 1:
-            print("\n*************************************")
-            print("***** FORMULARIO DE REGISTRO ********")
-            print("*************************************")
+            print("\n\t*************************************")
+            print("\t***** FORMULARIO DE REGISTRO ********")
+            print("\t*************************************")
             persona1 = Persona(None, None, None, None,
                                None, None, None)
             persona1.crear_persona()
@@ -24,7 +24,7 @@ class App:
                                 None,None)
             titular_1.menu_titular()
         elif opcion == 3:
-            print("Gracias por visitar nuestro banco")
+            print("\n\tGracias por visitar nuestra sucursal virtual, hasta pronto!")
             break
 
 
