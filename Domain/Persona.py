@@ -1,5 +1,8 @@
 class Persona:
+
     def __init__(self, id, nombre, apellido, correo, telefono, usuario, contrasena):
+
+
         self._id = id
         self._nombre = nombre
         self._apellido = apellido
@@ -49,12 +52,12 @@ class Persona:
         self._telefono = telefono
 
     @property
-    def usuario(self):
-        return self._usuario
+    def contraseña(self):
+        return self._contraseña
 
-    @usuario.setter
-    def usuario(self,_usuario):
-        self._usuario =_usuario
+    @contraseña.setter
+    def contraseña(self,contraseña):
+        self._contraseña = contraseña
 
     def crear_persona(self):
         print("Ingresa los siguientes datos: ")
@@ -93,6 +96,7 @@ class Persona:
                 print(f"Documento: {id} \nNombre: {nombre} \nApellido: {apellido} \nCorreo: {correo} \nTelefono: {telefono} \nUsuario: {usuario}")
         # -------------------------------------------------------------------------------------------------
     def autenticacion_login(self):
+
         usuario = input("\nIngresa el usuario: ")
         contrasena = input("Ingresa la Clave: ")
 
@@ -100,7 +104,7 @@ class Persona:
             if datos_persona["Usuario"] == usuario and datos_persona["Contraseña"] == contrasena:
                 print("¡Bienvenido al banco!")
                 return True
-        print("Usuario y/o clave incorrecta")
+        print("Usuario y/o Contraseña incorrecta")
         return False
     def buscar_persona(self,id):
         if id in personas:
@@ -114,15 +118,12 @@ class Persona:
             print("Ingrese los datos que deseas modificar y/o oprima enter si desea dejarlos como estan")
             nuevo_correo = input("Correo: ")
             nuevo_telefono = input("Telefono: ")
-            nuevo_usuario = input("Usuario: ")
 
             #Verifica si los datos no estan vacios antes de actualizarlos
             if nuevo_correo:
                 personas[id]["Correo"] = nuevo_correo
             if nuevo_telefono:
                 personas[id]["Telefono"] = nuevo_telefono
-            if nuevo_usuario:
-                personas[id]["Usuario"] = nuevo_usuario
 
             print("Datos actualizados exitosamente")
         else:
@@ -155,7 +156,6 @@ class Persona:
         apellido: {self._apellido},
         correo: {self._correo},
         telefono: {self._telefono},
-        usuario: {self._usuario}
         """
 
 #diccionario con las usuarios registrados

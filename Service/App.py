@@ -4,6 +4,12 @@ from Domain.Titular import Titular
 
 class App(Titular):
 
+    persona = Persona(None, None, None, None,
+                      None, None)
+    titular = Titular(None, None, None, None, None, None,
+                      None, None)
+
+    #primer menu, inicia el programa, permite registrar un usuario y ingresar al sistema
     while True:
         opcion = int(input("\nBienvenido a tu sucursal virtual\n"# MODIFIQUE ESTE MENU - JUEVES
                            "\n\tElige una de las opciones\n"
@@ -26,9 +32,6 @@ class App(Titular):
                 titular_1.menu_titular(persona1.obtener_datos_persona())
             else:
                 print("Autenticación fallida. Por favor, inténtelo de nuevo.")
-
         elif opcion == 3:
             print("\n\tGracias por visitar nuestra sucursal virtual, hasta pronto!")
             break
-
-

@@ -1,11 +1,12 @@
 from Domain.Persona import Persona, personas
 
 class Titular(Persona):
+
     def __init__(self, id, nombre, apellido, correo, telefono, usuario, contrasena, producto, clave=5):
         super().__init__(id, nombre, apellido, correo, telefono, usuario, contrasena)
         self._producto = producto
+        self._clave = clave
 
-        return nombre
     @property
     def clave(self):
         return self._clave
@@ -30,6 +31,7 @@ class Titular(Persona):
         self.producto = producto.productos[valor]
         self._clave = int(input("Ingresa la clave: "))
         self.personas[self._id] = self.nombre, self.apellido, self.correo, self.telefono, self.usuario, self._clave, self.producto"""
+
 
     def crear_titular(self, datos_persona):
         print("\n\tCreación del producto")
