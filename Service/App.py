@@ -43,7 +43,7 @@ class App:
                         credito_1.solicitar_credito(personas)
                         # print(personas)
                     elif opcion == 2:
-                        asesor.crear_producto()  # Le pase los datos de la persona como parametro
+                        asesor.crear_producto()
                     elif opcion == 3:
                         print("\n\tGracias por visitar nuestra sucursal virtual, hasta pronto!")
                         break

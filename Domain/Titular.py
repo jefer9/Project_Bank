@@ -43,20 +43,3 @@ class Titular(Persona):
     def __str__(self):
         return f"{super().__str__()} producto: {self.producto}"
 
-    def menu_titular(self, datos_persona):
-        while True:
-            print("\n\tMenu Titular\n")
-            print(f"Hola {datos_persona['Nombre']} que deseas hacer hoy?")
-            opcion = int(input("\n1. Solicitar crédito:\n"
-                               "2. Para crear producto:\n"
-                               "3. Para salir del aplicativo: "))
-
-            if opcion == 1:
-                credito_1 = Credito(None, None, None)
-                credito_1.solicitar_credito(datos_persona)
-                #print(personas)
-            elif opcion == 2:
-                self.crear_titular(datos_persona)  # Le pase los datos de la persona como parametro
-            elif opcion == 3:
-                print("\n\tGracias por visitar nuestra sucursal virtual, hasta pronto!")
-                break
