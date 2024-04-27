@@ -69,7 +69,7 @@ class Persona:
         self._contrasena = input("contraseña: ")
         print("\n\t***Persona creada exitosamente!***\n")
 
-        datos_persona = {"id": self._id,
+        """datos_persona = {"id": self._id,
                          "Nombre": self._nombre,
                          "Apellido": self._apellido,
                          "Correo": self._correo,
@@ -78,7 +78,7 @@ class Persona:
                          "Contraseña": self._contrasena
                          }
 
-        personas[datos_persona["id"]] = datos_persona
+        personas[datos_persona["id"]] = datos_persona"""
         # -------------------------------------------------------------------------------------------------
         # LOGICA PARA IMPRIMIR BASE DE DATOS - ESTO NOS PUEDE SERVIR AL MOMENTO DE QUERER MOSTRAR LA BD
         #esta logica debe de ir aparte de este metodo de crear
