@@ -54,8 +54,8 @@ class Persona:
     def contrasena(self):
         return self._contrasena
 
-    @contrasena.setter
-    def contrasena(self, contrasena):
+    @contraseña.setter
+    def contraseña(self, contrasena):
         self._contrasena = contrasena
 
     def crear_persona(self):
@@ -82,20 +82,18 @@ class Persona:
         # -------------------------------------------------------------------------------------------------
         # LOGICA PARA IMPRIMIR BASE DE DATOS - ESTO NOS PUEDE SERVIR AL MOMENTO DE QUERER MOSTRAR LA BD
         #esta logica debe de ir aparte de este metodo de crear
-        print(personas)
-        if not datos_persona:
+
+        """if not personas:
             print("\nNo hay usuarios registrados")
         else:
-            for id_perosna, datos_persona in personas.items():
+            for id, datos_persona in personas.items():
                 nombre = datos_persona["Nombre"]
                 apellido = datos_persona["Apellido"]
                 correo = datos_persona["Correo"]
                 telefono = datos_persona["Telefono"]
                 usuario = datos_persona["Usuario"]
                 print(f'\n\t***Datos del usuario***\n')
-                print(
-                    f"Documento: {id} \nNombre: {nombre} \nApellido: {apellido} \nCorreo: {correo} \nTelefono: {telefono} \nUsuario: {usuario}")
-
+                print(f"Documento: {id} \nNombre: {nombre} \nApellido: {apellido} \nCorreo: {correo} \nTelefono: {telefono} \nUsuario: {usuario}")"""
         # -------------------------------------------------------------------------------------------------
 
     def autenticacion_login(self):
@@ -104,17 +102,14 @@ class Persona:
             usuario = input("\nIngresa el usuario: ")
             contrasena = input("Ingresa la contraseña: ")
 
-            usuario_encontrado = False
-
-            for id_perosna, datos_persona in personas.items():
+            for id, datos_persona in personas.items():
                 if datos_persona["Usuario"] == usuario and datos_persona["Contraseña"] == contrasena:
                     print("¡Bienvenido al banco!")
-                    usuario_encontrado = True
+                    return True
+                else:
+                    print("\nUsuario y/o Contraseña incorrecta\n")
                     break
-            if usuario_encontrado:
-                return True
-            else:
-                print("\nUsuario y/o Contraseña incorrecta\n")
+        return False
 
     def buscar_persona(self, id):
         if id in personas:
