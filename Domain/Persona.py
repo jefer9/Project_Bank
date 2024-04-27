@@ -1,6 +1,6 @@
 class Persona:
 
-    def __init__(self, id, nombre, apellido, correo, telefono, usuario, contraseña):
+    def __init__(self, id, nombre, apellido, correo, telefono, usuario, contrasena):
 
         self._id = id
         self._nombre = nombre
@@ -8,7 +8,7 @@ class Persona:
         self._correo = correo
         self._telefono = telefono
         self._usuario = usuario
-        self._contraseña = contraseña
+        self._contrasena = contrasena
 
     @property
     def id(self):
@@ -51,12 +51,12 @@ class Persona:
         self._telefono = telefono
 
     @property
-    def contraseña(self):
-        return self._contraseña
+    def contrasena(self):
+        return self._contrasena
 
     @contraseña.setter
-    def contraseña(self, contraseña):
-        self._contraseña = contraseña
+    def contraseña(self, contrasena):
+        self._contrasena = contrasena
 
     def crear_persona(self):
         print("Ingresa los siguientes datos: ")
@@ -67,7 +67,7 @@ class Persona:
         self._telefono = input("Telefono: ")
         self._usuario = input("Usuario: ")
         self._contrasena = input("contraseña: ")
-        print("\n\t***Persona creada exitosamente!***")
+        print("\n\t***Persona creada exitosamente!***\n")
 
         datos_persona = {"id": self._id,
                          "Nombre": self._nombre,
@@ -98,14 +98,17 @@ class Persona:
 
     def autenticacion_login(self):
 
-        usuario = input("\nIngresa el usuario: ")
-        contrasena = input("Ingresa la contraseña: ")
+        while True:
+            usuario = input("\nIngresa el usuario: ")
+            contrasena = input("Ingresa la contraseña: ")
 
-        for id, datos_persona in personas.items():
-            if datos_persona["Usuario"] == usuario and datos_persona["Contraseña"] == contrasena:
-                print("¡Bienvenido al banco!")
-                return True
-        print("Usuario y/o Contraseña incorrecta")
+            for id, datos_persona in personas.items():
+                if datos_persona["Usuario"] == usuario and datos_persona["Contraseña"] == contrasena:
+                    print("¡Bienvenido al banco!")
+                    return True
+                else:
+                    print("\nUsuario y/o Contraseña incorrecta\n")
+                    break
         return False
 
     def buscar_persona(self, id):
@@ -143,15 +146,13 @@ class Persona:
         return datos_persona
 
     def __str__(self):
-        print = f"""
+        return f"""
         id: {self._id},
         nombre: {self._nombre},
         apellido: {self._apellido},
         correo: {self._correo},
         telefono: {self._telefono},
         """
-        return print
-
 
 #diccionario con las usuarios registrados
 personas = {}

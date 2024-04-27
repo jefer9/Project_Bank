@@ -5,7 +5,7 @@ from Domain.Producto import Producto
 from Domain.Credito import Credito
 
 
-class App:
+class App(Producto, Asesor):
     persona = Persona(None, None, None, None,
                       None, None, None)
     titular = Titular(None, None, None, None, None, None,
@@ -26,9 +26,7 @@ class App:
             print("\t***** FORMULARIO DE REGISTRO ********")
             print("\t*************************************")
 
-
             asesor.crear_titular()
-
         elif opcion == 2:
             if persona.autenticacion_login():
                 while True:
@@ -41,14 +39,12 @@ class App:
                     if opcion == 1:
                         credito_1 = Credito(None, None, None)
                         credito_1.solicitar_credito(personas)
-                        # print(personas)
+                        print(personas)
                     elif opcion == 2:
                         asesor.crear_producto()  # Le pase los datos de la persona como parametro
                     elif opcion == 3:
                         print("\n\tGracias por visitar nuestra sucursal virtual, hasta pronto!")
                         break
-
-
             else:
                 print("Autenticación fallida. Por favor, inténtelo de nuevo.")
         elif opcion == 3:
