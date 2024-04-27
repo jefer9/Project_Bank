@@ -69,7 +69,7 @@ class Persona:
         self._contrasena = input("contraseña: ")
         print("\n\t***Persona creada exitosamente!***\n")
 
-        """datos_persona = {"id": self._id,
+        datos_persona = {"id": self._id,
                          "Nombre": self._nombre,
                          "Apellido": self._apellido,
                          "Correo": self._correo,
@@ -78,12 +78,12 @@ class Persona:
                          "Contraseña": self._contrasena
                          }
 
-        personas[datos_persona["id"]] = datos_persona"""
+        personas[datos_persona["id"]] = datos_persona
         # -------------------------------------------------------------------------------------------------
         # LOGICA PARA IMPRIMIR BASE DE DATOS - ESTO NOS PUEDE SERVIR AL MOMENTO DE QUERER MOSTRAR LA BD
         #esta logica debe de ir aparte de este metodo de crear
 
-        print(personas)
+        """print(personas)
         if not datos_persona:
             print("\nNo hay usuarios registrados")
         else:
@@ -95,7 +95,7 @@ class Persona:
                 usuario = datos_persona["Usuario"]
                 print(f'\n\t***Datos del usuario***\n')
                 print(
-                    f"Documento: {id} \nNombre: {nombre} \nApellido: {apellido} \nCorreo: {correo} \nTelefono: {telefono} \nUsuario: {usuario}")
+                    f"Documento: {id} \nNombre: {nombre} \nApellido: {apellido} \nCorreo: {correo} \nTelefono: {telefono} \nUsuario: {usuario}")"""
 
         # -------------------------------------------------------------------------------------------------
 
@@ -107,7 +107,7 @@ class Persona:
 
             usuario_encontrado = False
 
-            for id_perosna, datos_persona in personas.items():
+            for id, datos_persona in personas.items():
                 if datos_persona["Usuario"] == usuario and datos_persona["Contraseña"] == contrasena:
                     print("¡Bienvenido al banco!")
                     usuario_encontrado = True
