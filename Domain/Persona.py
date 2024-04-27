@@ -54,8 +54,8 @@ class Persona:
     def contrasena(self):
         return self._contrasena
 
-    @contraseña.setter
-    def contraseña(self, contrasena):
+    @contrasena.setter
+    def contrasena(self, contrasena):
         self._contrasena = contrasena
 
     def crear_persona(self):
@@ -83,7 +83,7 @@ class Persona:
         # LOGICA PARA IMPRIMIR BASE DE DATOS - ESTO NOS PUEDE SERVIR AL MOMENTO DE QUERER MOSTRAR LA BD
         #esta logica debe de ir aparte de este metodo de crear
 
-        """if not personas:
+        if not personas:
             print("\nNo hay usuarios registrados")
         else:
             for id, datos_persona in personas.items():
@@ -93,7 +93,7 @@ class Persona:
                 telefono = datos_persona["Telefono"]
                 usuario = datos_persona["Usuario"]
                 print(f'\n\t***Datos del usuario***\n')
-                print(f"Documento: {id} \nNombre: {nombre} \nApellido: {apellido} \nCorreo: {correo} \nTelefono: {telefono} \nUsuario: {usuario}")"""
+                print(f"Documento: {id} \nNombre: {nombre} \nApellido: {apellido} \nCorreo: {correo} \nTelefono: {telefono} \nUsuario: {usuario}")
         # -------------------------------------------------------------------------------------------------
 
     def autenticacion_login(self):
