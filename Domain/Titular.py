@@ -37,8 +37,12 @@ class Titular(Persona):
     def crear_titular(self):
         super().crear_persona()
         self._clave = input("Ingresa la nueva clave: ")
-        personas["Clave"] = self._clave
-        # print(datos_persona)
+        id_persona = self.id
+        if id_persona in personas:
+            personas[id_persona]["Clave"] = self._clave
+        else:
+            print("No se pudo encontrar la persona creada en la base de datos.")
+
 
     def __str__(self):
         return f"{super().__str__()} producto: {self.producto}"

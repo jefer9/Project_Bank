@@ -14,7 +14,7 @@ class Asesor(Titular, Producto):
         super().crear_titular()
         return titular
 
-    def crear_producto(self, datos_persona=None):
+    def crear_producto(self, datos_persona):
         producto = Producto(None, None)
         super().crear_producto(datos_persona)
         return producto

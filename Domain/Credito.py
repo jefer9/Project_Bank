@@ -23,7 +23,7 @@ class Credito:
         self._cantidad = cantidad
 
     # Métodos
-    def solicitar_credito(self, datos_persona):
+    def solicitar_credito(self, CREDITOa):
         self._cantidad = float(input("Ingrese el monto para crédito: "))
         datos_persona["Cantidad credito"] = self._cantidad
 

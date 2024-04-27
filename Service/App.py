@@ -5,7 +5,7 @@ from Domain.Producto import Producto
 from Domain.Credito import Credito
 
 
-class App(Producto, Asesor):
+class App:
     persona = Persona(None, None, None, None,
                       None, None, None)
     titular = Titular(None, None, None, None, None, None,
@@ -41,7 +41,7 @@ class App(Producto, Asesor):
                         credito_1.solicitar_credito(personas)
                         print(personas)
                     elif opcion == 2:
-                        asesor.crear_producto()
+                        asesor.crear_producto(personas)
                     elif opcion == 3:
                         print("\n\tGracias por visitar nuestra sucursal virtual, hasta pronto!")
                         break
@@ -50,3 +50,5 @@ class App(Producto, Asesor):
         elif opcion == 3:
             print("\n\tGracias por visitar nuestra sucursal virtual, hasta pronto!")
             break
+
+
