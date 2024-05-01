@@ -1,9 +1,10 @@
 from Domain.Titular import Titular
 
 class Producto:
-    def __init__(self, id_producto, nombre_producto):
+    def __init__(self, id_producto, nombre_producto, id_titular=None):
         self._id_producto = id_producto
         self._nombre_producto = nombre_producto
+        self._id_titular = id_titular
 
     @property
     def id_producto(self):
@@ -18,15 +19,23 @@ class Producto:
         return self._nombre_producto
 
     @nombre_producto.setter
-    def nombre_producto(self,nombre_producto):
+    def nombre_producto(self, nombre_producto):
         self._nombre_producto = nombre_producto
+
+    @property
+    def id_titular(self):
+        return self._id_titular
+
+    @id_titular.setter
+    def id_titular(self, id_titular):
+        self._id_titular = id_titular
 
     productos = {}
 
-    #metodos propios
+    # Métodos propios
     def crear_producto(self):
-        self._id_producto = int(input("id producto: "))
-        self._nombre_producto = input("nombre producto: ")
+        self._id_producto = int(input("Id producto: "))
+        self._nombre_producto = input("Nombre producto: ")
         self.productos[self._id_producto] = self._nombre_producto
 
 

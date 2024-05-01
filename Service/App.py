@@ -34,8 +34,8 @@ class App:
                     print(f"Hola que deseas hacer hoy?")
                     opcion = int(input("\n1. Solicitar crédito:\n"
                                        "2. Para crear producto:\n"
-                                       "3. Para salir del aplicativo:\n"
-                                       "4. lista de usuarios"))
+                                       "3. lista de usuarios:\n"
+                                       "4. Para salir del aplicativo: "))
 
                     if opcion == 1:
                         credito_1 = Credito(None, None, None)
@@ -44,10 +44,10 @@ class App:
                     elif opcion == 2:
                         asesor.crear_producto()
                     elif opcion == 3:
+                        print(personas)
+                    elif opcion == 4:
                         print("\n\tGracias por visitar nuestra sucursal virtual, hasta pronto!")
                         break
-                    elif opcion == 4:
-                        print(personas)
             else:
                 print("Autenticación fallida. Por favor, inténtelo de nuevo.")
         elif opcion == 3:

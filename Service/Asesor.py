@@ -16,17 +16,20 @@ class Asesor(Titular, Producto):
 
     def crear_producto(self):
         producto = Producto(None, None)
-        super().crear_producto()
-        id_persona = self.id
-        productos = producto.productos
-        if id_persona in personas:
-            personas[id_persona]["Productos"] = productos
+        producto.crear_producto()
 
-        """print("\n\tCreación del producto")
-        producto = int(input("\nSelecciona el tipo de cuenta:\n"
-                             "1. Ahorros:\n"
-                             "2. Corriente: "))"""
+        id_titular = input("Ingrese el ID del titular asociado al producto: ")
 
+        producto.id_titular = id_titular
+
+        if id_titular in personas:
+
+            productos_titular = personas[id_titular].get("Productos", {})
+            productos_titular[producto.id_producto] = producto.nombre_producto
+            personas[id_titular]["Productos"] = productos_titular
+            print("Producto creado exitosamente.")
+        else:
+            print("Error: No se pudo encontrar el titular asociado al producto en la base de datos.")
 
         return producto
 
