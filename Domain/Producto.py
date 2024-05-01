@@ -1,4 +1,5 @@
 from Domain.Titular import Titular
+import random
 
 class Producto:
     def __init__(self, id_producto, nombre_producto, id_titular=None):
@@ -34,7 +35,7 @@ class Producto:
 
     # Métodos propios
     def crear_producto(self):
-        self._id_producto = int(input("Id producto: "))
+        self._id_producto = random.randint(1000,99999)
         self._nombre_producto = input("Nombre producto: ")
         self.productos[self._id_producto] = self._nombre_producto
 
