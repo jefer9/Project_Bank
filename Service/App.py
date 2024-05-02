@@ -3,6 +3,7 @@ from Service.Asesor import Asesor
 from Domain.Titular import Titular
 from Domain.Producto import Producto
 from Domain.Credito import Credito
+from Domain.Cuenta_ahorros import Cuenta_ahorros #----------REVISAR
 
 
 class App:
@@ -10,12 +11,14 @@ class App:
                       None, None, None)
     titular = Titular(None, None, None, None, None, None,
                       None, None, None)
-    producto = Producto(None,None)
+    producto = Producto(None,None, None)
     asesor = Asesor()
+
+    # cuenta_Ahorros = Cuenta_ahorros(None, None, None, None) #----------REVISAR
 
 
     while True:
-        opcion = int(input("\nBienvenido a tu sucursal virtual\n"  # MODIFIQUE ESTE MENU - JUEVES
+        opcion = int(input("\nBienvenido a tu sucursal virtual\n"
                            "\n\t---------------\n"
                            "1 para registrarse en nuestro banco:\n"
                            "2 para ingresar a tu cuenta:\n"
@@ -35,7 +38,8 @@ class App:
                     opcion = int(input("\n1. Solicitar crédito:\n"
                                        "2. Para crear producto:\n"
                                        "3. lista de usuarios:\n"
-                                       "4. Para salir del aplicativo: "))
+                                       "4. Para salir del aplicativo:\n"
+                                       "5. Consignar: "))
 
                     if opcion == 1:
                         credito_1 = Credito(None, None, None)
@@ -48,10 +52,13 @@ class App:
                     elif opcion == 4:
                         print("\n\tGracias por visitar nuestra sucursal virtual, hasta pronto!")
                         break
+                    elif opcion == 5:
+                        producto_consignar = Producto(None, None, None)
+                        # Llamar al método consignar en la instancia creada
+                        producto_consignar.consignar()
+                        # producto.consignar()
             else:
                 print("Autenticación fallida. Por favor, inténtelo de nuevo.")
         elif opcion == 3:
             print("\n\tGracias por visitar nuestra sucursal virtual, hasta pronto!")
             break
-
-
