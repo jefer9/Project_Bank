@@ -1,14 +1,12 @@
-from Domain.Persona import personas
-from Domain.Titular import Titular
+from Domain.Persona import Persona
 import random
 
-class Producto:
-    def __init__(self, id_producto, nombre_producto, id_titular=None):#----------------------agregue saldo=0
-        # self.saldo = None #----------------------comente esta linea
+class Producto(Persona):
+    def __init__(self, id_producto, nombre_producto, id, nombre, apellido, correo, telefono,usuario,contrasena):
+        super().__init__(id, nombre, apellido, correo, telefono, usuario, contrasena)
         self._id_producto = id_producto
         self._nombre_producto = nombre_producto
-        self._saldo = 5000
-        self._id_titular = id_titular
+        self._saldo = 0
 
     @property
     def id_producto(self):
@@ -34,19 +32,6 @@ class Producto:
     def id_titular(self, id_titular):
         self._id_titular = id_titular
 
-    productos = {}
-
-    # Métodos propios
-    def crear_producto(self):
-        self._id_producto = random.randint(1000,99999)
-        self._nombre_producto = input("Nombre producto: ")
-
-    def mostrar_producto(self):
-        for i in self.productos.items():
-            print(i)
-
-    # **************** crear movimientos ****************
-
     @property
     def saldo(self):
         return self._saldo
@@ -54,6 +39,22 @@ class Producto:
     @saldo.setter
     def saldo(self, saldo):
         self._saldo = saldo
+
+    productos = {}
+
+    # Métodos propios
+    def crear_producto(self):
+        self._id_producto = random.randint(1000,99999)
+
+        #logica para ingresar tabla producto
+
+    def mostrar_producto(self):
+        for i in self.productos.items():
+            print(i)
+
+    # **************** crear movimientos ****************
+
+
 
     def consignar(self, ):
         consignacion = int(input("Valor a consignar: "))

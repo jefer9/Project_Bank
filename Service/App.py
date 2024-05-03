@@ -1,6 +1,6 @@
 from Domain.Persona import Persona,personas
 from Service.Asesor import Asesor
-from Domain.Titular import Titular
+#from Domain.Titular import Titular
 from Domain.Producto import Producto
 from Domain.Credito import Credito
 from Domain.Cuenta_ahorros import Cuenta_ahorros #----------REVISAR
@@ -8,9 +8,10 @@ from Domain.Cuenta_ahorros import Cuenta_ahorros #----------REVISAR
 class App:
     persona = Persona(None, None, None, None,
                       None, None, None)
-    titular = Titular(None, None, None, None, None, None,
-                      None, None, None)
-    producto = Producto(None,None, None)
+    #titular = Titular(None, None, None, None, None, None,
+                      #None, None, None)
+    producto = Producto(None,None,
+                        None, None,None,None, None,None,None)
     asesor = Asesor()
 
     # cuenta_Ahorros = Cuenta_ahorros(None, None, None, None) #----------REVISAR
@@ -27,7 +28,7 @@ class App:
             print("\t***** FORMULARIO DE REGISTRO ********")
             print("\t*************************************")
 
-            asesor.crear_titular(personas)
+            asesor.crear_persona()
         elif opcion == 2:
             if persona.autenticacion_login():
                 while True:
