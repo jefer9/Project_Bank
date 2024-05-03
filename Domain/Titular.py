@@ -43,7 +43,6 @@ class Titular(Persona):
         else:
             print("Error: No se pudo encontrar la persona creada en la base de datos.")
 
-
 def __str__(self):
         return f"{super().__str__()} producto: {self.producto}"
 

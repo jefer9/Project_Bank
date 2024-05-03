@@ -96,9 +96,7 @@ class Persona:
                 print(f'\n\t***Datos del usuario***\n')
                 print(
                     f"Documento: {id} \nNombre: {nombre} \nApellido: {apellido} \nCorreo: {correo} \nTelefono: {telefono} \nUsuario: {usuario}")"""
-
         # -------------------------------------------------------------------------------------------------
-
     def autenticacion_login(self):
 
         while True:
@@ -116,7 +114,6 @@ class Persona:
                 return True
             else:
                 print("\nUsuario y/o Contraseña incorrecta\n")
-
     def buscar_persona(self, id):
         if id in personas:
             print("Persona encontrada")
@@ -167,5 +164,5 @@ class Persona:
         telefono: {self._telefono},
         """
 
-#diccionario con las usuarios registrados
+#diccionario con los usuarios registrados
 personas = {}

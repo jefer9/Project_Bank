@@ -5,7 +5,6 @@ from Domain.Producto import Producto
 from Domain.Credito import Credito
 from Domain.Cuenta_ahorros import Cuenta_ahorros #----------REVISAR
 
-
 class App:
     persona = Persona(None, None, None, None,
                       None, None, None)
@@ -15,7 +14,6 @@ class App:
     asesor = Asesor()
 
     # cuenta_Ahorros = Cuenta_ahorros(None, None, None, None) #----------REVISAR
-
 
     while True:
         opcion = int(input("\nBienvenido a tu sucursal virtual\n"
@@ -53,10 +51,7 @@ class App:
                         print("\n\tGracias por visitar nuestra sucursal virtual, hasta pronto!")
                         break
                     elif opcion == 5:
-                        producto_consignar = Producto(None, None, None)
-                        # Llamar al método consignar en la instancia creada
-                        producto_consignar.consignar()
-                        # producto.consignar()
+                        producto.consignar()
             else:
                 print("Autenticación fallida. Por favor, inténtelo de nuevo.")
         elif opcion == 3:

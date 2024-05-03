@@ -1,8 +1,9 @@
+from Domain.Persona import personas
 from Domain.Titular import Titular
 import random
 
 class Producto:
-    def __init__(self, id_producto, nombre_producto, saldo, id_titular=None):#----------------------agregue saldo=0
+    def __init__(self, id_producto, nombre_producto, id_titular=None):#----------------------agregue saldo=0
         # self.saldo = None #----------------------comente esta linea
         self._id_producto = id_producto
         self._nombre_producto = nombre_producto
@@ -39,15 +40,10 @@ class Producto:
     def crear_producto(self):
         self._id_producto = random.randint(1000,99999)
         self._nombre_producto = input("Nombre producto: ")
-        # self._saldo = int(input("Ingrese el saldo: "))
-        # self.productos[self._id_producto] = self._nombre_producto
-        # self.productos[self._id_producto] = self._nombre_producto, self._saldo # agregar saldo
-
 
     def mostrar_producto(self):
         for i in self.productos.items():
             print(i)
-
 
     # **************** crear movimientos ****************
 
@@ -59,6 +55,12 @@ class Producto:
     def saldo(self, saldo):
         self._saldo = saldo
 
+    def consignar(self, ):
+        consignacion = int(input("Valor a consignar: "))
+        total = self._saldo + consignacion
+        print("Consignación exitosa. Nuevo saldo:", total)
+        # self.productos[self._id_producto] = {'Saldo' : total}
+
     def retirar(self):
         retiro = int(input("Ingrese el valor a retirar: "))
         if retiro > self._saldo:
@@ -69,12 +71,6 @@ class Producto:
 
     def consultar_saldo(self):
         print("su saldo es: ", self._saldo)
-
-    def consignar(self):
-        consignacion = int(input("Valor a consignar: "))
-        self._saldo += consignacion
-
-        print("Consignación exitosa. Nuevo saldo:", self._saldo)
 
     def transferir(self):
         transeferencia = int(input("Valor a transferir: "))
