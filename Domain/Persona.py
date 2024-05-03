@@ -1,3 +1,5 @@
+from Domain.ConnexionBD import ConexionBD
+
 class Persona:
 
     def __init__(self, id, nombre, apellido, correo, telefono, usuario, contrasena):
@@ -66,38 +68,21 @@ class Persona:
         self._correo = input("Correo: ")
         self._telefono = input("Telefono: ")
         self._usuario = input("Usuario: ")
-        self._contrasena = input("contraseña: ")
-        print("\n\t***Persona creada exitosamente!***\n")
+        self._contrasena = input("Contraseña: ")
 
-        datos_persona = {"id": self._id,
-                         "Nombre": self._nombre,
-                         "Apellido": self._apellido,
-                         "Correo": self._correo,
-                         "Telefono": self._telefono,
-                         "Usuario": self._usuario,
-                         "Contraseña": self._contrasena
-                         }
-
-        personas[datos_persona["id"]] = datos_persona
-        # -------------------------------------------------------------------------------------------------
-        # LOGICA PARA IMPRIMIR BASE DE DATOS - ESTO NOS PUEDE SERVIR AL MOMENTO DE QUERER MOSTRAR LA BD
-        #esta logica debe de ir aparte de este metodo de crear
-
-        """print(personas)
-        if not datos_persona:
-            print("\nNo hay usuarios registrados")
-        else:
-            for id_perosna, datos_persona in personas.items():
-                nombre = datos_persona["Nombre"]
-                apellido = datos_persona["Apellido"]
-                correo = datos_persona["Correo"]
-                telefono = datos_persona["Telefono"]
-                usuario = datos_persona["Usuario"]
-                print(f'\n\t***Datos del usuario***\n')
-                print(
-                    f"Documento: {id} \nNombre: {nombre} \nApellido: {apellido} \nCorreo: {correo} \nTelefono: {telefono} \nUsuario: {usuario}")"""
-
-        # -------------------------------------------------------------------------------------------------
+        try:
+            db = ConexionBD(host="localhost", port="3306", user="root", passwd="", database="projectbank")
+            db.connect()
+            query = "INSERT INTO Persona (id, nombre, apellido, correo, telefono, usuario, contraseña) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+            values = (
+            self._id, self._nombre, self._apellido, self._correo, self._telefono, self._usuario, self._contrasena)
+            db.execute_query(query, values)
+            db.connection.commit()  # Confirmar la transacción
+            print("Persona agregada exitosamente")
+        except Exception as e:
+            print("Error al agregar persona:", e)
+        finally:
+            db.disconnect()
 
     def autenticacion_login(self):
 
@@ -137,7 +122,7 @@ class Persona:
             nuevo_correo = input("Correo: ")
             nuevo_telefono = input("Telefono: ")
 
-            #Verifica si los datos no estan vacios antes de actualizarlos
+            # Verifica si los datos no estan vacios antes de actualizarlos
             if nuevo_correo:
                 personas[id]["Correo"] = nuevo_correo
             if nuevo_telefono:
@@ -167,5 +152,9 @@ class Persona:
         telefono: {self._telefono},
         """
 
-#diccionario con las usuarios registrados
+
 personas = {}
+persona_1 = Persona(None, None, None, None, None, None, None)
+persona_1.crear_persona()
+
+
