@@ -11,7 +11,7 @@ class App:
     #titular = Titular(None, None, None, None, None, None,
                       #None, None, None)
     producto = Producto(None,None,
-                        None, None,None,None, None,None,None)
+                        None, None,None,None, None,None,None, None)
     asesor = Asesor()
 
     # cuenta_Ahorros = Cuenta_ahorros(None, None, None, None) #----------REVISAR

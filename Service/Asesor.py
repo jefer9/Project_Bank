@@ -11,7 +11,7 @@ class Asesor(Producto, Persona):
         persona_1 = Persona(None,None,None,None,None,None,None)
         persona_1.crear_persona()
     def crear_producto(self):
-        producto = Producto(None, None, None, None, None, None, None, None, None)
+        producto = Producto(None, None, None, None, None, None, None, None, None,None)
         super().crear_producto()
         return producto
 

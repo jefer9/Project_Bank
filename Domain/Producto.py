@@ -1,12 +1,13 @@
 from Domain.Persona import Persona
 import random
+from Domain.ConnexionBD import ConexionBD
 
 class Producto(Persona):
-    def __init__(self, id_producto, nombre_producto, id, nombre, apellido, correo, telefono,usuario,contrasena):
+    def __init__(self, id_producto, nombre_producto, id, nombre, apellido, correo, telefono,usuario,contrasena, saldo):
         super().__init__(id, nombre, apellido, correo, telefono, usuario, contrasena)
         self._id_producto = id_producto
         self._nombre_producto = nombre_producto
-        self._saldo = 0
+        self._saldo = saldo
 
     @property
     def id_producto(self):
@@ -44,7 +45,29 @@ class Producto(Persona):
 
     # Métodos propios
     def crear_producto(self):
+        print("Presiona alguna de las opcionesn\n"
+              "1. Ahorros\n"
+              "2. Corriente")
+        valor = int(input())
+        if valor == 1:
+            self.nombre_producto = "Ahorros"
+        if valor == 2:
+            self.nombre_producto = "Corriente"
         self._id_producto = random.randint(1000,99999)
+        self.saldo = 0
+
+        try:
+            db = ConexionBD(host="localhost", port="3306", user="root", passwd="", database="projectbank")
+            db.connect()
+            query = "INSERT INTO Producto (id_producto, nombre_producto,saldo) VALUES (%s, %s, %s)"
+            values = (self._id_producto, self._nombre_producto, self._saldo)
+            db.execute_query(query,values)
+            db.connection.commit()
+            print("Producto agregado exitosamente")
+        except Exception as e:
+            print("Error al agregar producto: ",e)
+        finally:
+            db.disconnect()
 
         #logica para ingresar tabla producto
 
@@ -61,6 +84,7 @@ class Producto(Persona):
         total = self._saldo + consignacion
         print("Consignación exitosa. Nuevo saldo:", total)
         # self.productos[self._id_producto] = {'Saldo' : total}
+
 
     def retirar(self):
         retiro = int(input("Ingrese el valor a retirar: "))
@@ -82,3 +106,4 @@ class Producto(Persona):
         else:
             # Aqui se hace la suma al numero de cuenta destinatario
             print("Transeferencia exitosa")
+
