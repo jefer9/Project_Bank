@@ -85,22 +85,28 @@ class Persona:
             db.disconnect()
 
     def autenticacion_login(self):
+        try:
+            db = ConexionBD(host="localhost", port="3306", user="root", passwd="", database="projectbank")
+            db.connect()
 
-        while True:
-            usuario = input("\nIngresa el usuario: ")
-            contrasena = input("Ingresa la contraseña: ")
+            while True:
+                usuario = input("\nIngresa el usuario: ")
+                contrasena = input("Ingresa la contraseña: ")
 
-            usuario_encontrado = False
+                query = "SELECT * FROM Persona WHERE usuario = %s AND contraseña = %s"
+                values = (usuario, contrasena)
+                result = db.execute_query(query, values)
 
-            for id, datos_persona in personas.items():
-                if datos_persona["Usuario"] == usuario and datos_persona["Contraseña"] == contrasena:
+                if result:
                     print("¡Bienvenido al banco!")
-                    usuario_encontrado = True
-                    break
-            if usuario_encontrado:
-                return True
-            else:
-                print("\nUsuario y/o Contraseña incorrecta\n")
+                    return True
+                else:
+                    print("\nUsuario y/o Contraseña incorrecta\n")
+
+        except Exception as e:
+            print("Error en la autenticación:", e)
+        finally:
+            db.disconnect()
 
     def buscar_persona(self, id):
         if id in personas:
@@ -152,9 +158,49 @@ class Persona:
         telefono: {self._telefono},
         """
 
-
 personas = {}
-persona_1 = Persona(None, None, None, None, None, None, None)
-persona_1.crear_persona()
+# persona_1 = Persona(None, None, None, None, None, None, None)
+# persona_1.crear_persona()
 
+# --- CREAR PERSONA --- CON DICCIONARIO---------------------------------------->
 
+# def crear_persona(self):
+#     print("Ingresa los siguientes datos: ")
+#     self._id = input("ID: ")
+#     self._nombre = input("Nombre: ")
+#     self._apellido = input("Apellido: ")
+#     self._correo = input("Correo: ")
+#     self._telefono = input("Telefono: ")
+#     self._usuario = input("Usuario: ")
+#     self._contrasena = input("contraseña: ")
+#     print("\n\t***Persona creada exitosamente!***\n")
+#
+#     datos_persona = {"id": self._id,
+#                      "Nombre": self._nombre,
+#                      "Apellido": self._apellido,
+#                      "Correo": self._correo,
+#                      "Telefono": self._telefono,
+#                      "Usuario": self._usuario,
+#                      "Contraseña": self._contrasena
+#                      }
+#
+#     personas[datos_persona["id"]] = datos_persona
+
+# --- LOGIN --- CON DICCIONARIO------------------------------------------------>
+
+# def autenticacion_login(self):
+#     while True:
+#         usuario = input("\nIngresa el usuario: ")
+#         contrasena = input("Ingresa la contraseña: ")
+#
+#         usuario_encontrado = False
+#
+#         for id, datos_persona in personas.items():
+#             if datos_persona["Usuario"] == usuario and datos_persona["Contraseña"] == contrasena:
+#                 print("¡Bienvenido al banco!")
+#                 usuario_encontrado = True
+#                 break
+#         if usuario_encontrado:
+#             return True
+#         else:
+#             print("\nUsuario y/o Contraseña incorrecta\n")
