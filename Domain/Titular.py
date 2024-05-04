@@ -1,7 +1,6 @@
 from Domain.Producto import Producto
 from Domain.ConnexionBD import ConexionBD
 
-
 class Titular(Producto):
 
     def consignar(self, ):
@@ -22,40 +21,65 @@ class Titular(Producto):
             db.disconnect()
 
     def retirar(self):
-        num_cuenta = int(input("Ingrese número de cuenta: "))
+        num_cuenta = int(input("Ingrese el numero de cuenta: "))
         retiro = int(input("Ingrese el valor a retirar: "))
 
         try:
             db = ConexionBD(host="localhost", port="3306", user="root", passwd="", database="projectbank")
             db.connect()
 
-            # Consulta para obtener el saldo actual del producto
-            consulta_saldo = "SELECT saldo FROM Producto WHERE id_producto = %s"
-            saldo = db.execute_query(consulta_saldo, (num_cuenta,))
+            # Obtener el saldo actual del producto
+            query_saldo_actual = "SELECT saldo FROM Producto WHERE id_producto = %s"
+            values_saldo_actual = (num_cuenta,)
+            saldo_actual = db.execute_query(query_saldo_actual, values_saldo_actual)
 
-            if not saldo:
-                print("Número de cuenta no válido.")
-                return
+            if saldo_actual:
+                saldo_actual = saldo_actual[0][0]  # Seleccionamos el saldo de la lista de resultados
 
-            saldo_actual = saldo[0][0]
-
-            # Verificar si el saldo es suficiente para el retiro
-            if retiro > saldo_actual:
-                print("Fondos insuficientes")
+                # Verificar si hay fondos suficientes para el retiro
+                if retiro > saldo_actual:
+                    print("Fondos insuficientes.")
+                else:
+                    # Actualizar el saldo después del retiro
+                    nuevo_saldo = saldo_actual - retiro
+                    query_actualizar_saldo = "UPDATE Producto SET saldo = %s WHERE id_producto = %s"
+                    values_actualizar_saldo = (nuevo_saldo, num_cuenta)
+                    db.execute_query(query_actualizar_saldo, values_actualizar_saldo)
+                    db.connection.commit()
+                    print("Retiro exitoso.")
+                    print(f'Nuevo saldo: $ {nuevo_saldo}')
             else:
-                # Consulta para actualizar el saldo en la base de datos
-                query = "UPDATE Producto SET saldo = saldo - %s WHERE id_producto = %s"
-                values = (retiro, num_cuenta)
-                db.execute_query(query, values)
-                db.connection.commit()
-                print("Retiro completado con éxito")
+                print("Producto no encontrado.")
+
         except Exception as e:
-            print("Error en el retiro:", e)
+            print("Error al realizar el retiro:", e)
         finally:
             db.disconnect()
 
     def consultar_saldo(self):
-        print("su saldo es: ", self._saldo)
+        num_cuenta = int(input("Ingrese el numero de cuenta: "))
+
+        try:
+            db = ConexionBD(host="localhost", port="3306", user="root", passwd="", database="projectbank")
+            db.connect()
+
+            query_saldo_actual = "SELECT saldo FROM Producto WHERE id_producto = %s"
+            values_saldo_actual = (num_cuenta,)
+            saldo_actual = db.execute_query(query_saldo_actual, values_saldo_actual)
+
+            if saldo_actual:
+                saldo_actual = saldo_actual[0][0]  # Seleccionamos el saldo de la lista de resultados
+                print(f"Su saldo actual es: {saldo_actual:.0f}")
+            else:
+                print("Producto no encontrado.")
+
+        except Exception as e:
+            print("Error al consultar el saldo:", e)
+        finally:
+            db.disconnect()
+
+
+
 
     def transferir(self):
         transeferencia = int(input("Valor a transferir: "))
@@ -66,5 +90,3 @@ class Titular(Producto):
         else:
             # Aqui se hace la suma al numero de cuenta destinatario
             print("Transeferencia exitosa")
-
-
