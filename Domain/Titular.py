@@ -78,15 +78,50 @@ class Titular(Producto):
         finally:
             db.disconnect()
 
-
-
-
     def transferir(self):
-        transeferencia = int(input("Valor a transferir: "))
+        num_cuenta_remitente = int(input("Ingrese el numero de cuenta remitente: "))
         num_cuenta_destino = int(input("Numero de cuenta de destino: "))
+        transeferencia = int(input("Valor a transferir: "))
 
-        if transeferencia > self._saldo:
-            print("fondos insuficientes")
-        else:
-            # Aqui se hace la suma al numero de cuenta destinatario
-            print("Transeferencia exitosa")
+
+        print("Transeferencia exitosa")
+
+        try:
+            db = ConexionBD(host="localhost", port="3306", user="root", passwd="", database="projectbank")
+            db.connect()
+
+            # Obtener el saldo actual del producto
+            query_saldo_actual = "SELECT saldo FROM Producto WHERE id_producto = %s"
+            values_saldo_actual = (num_cuenta_remitente,)
+            saldo_actual = db.execute_query(query_saldo_actual, values_saldo_actual)
+
+            if saldo_actual:
+                saldo_actual = saldo_actual[0][0]  # Seleccionamos el saldo de la lista de resultados
+
+                # Verificar si hay fondos suficientes para el retiro
+                if transeferencia > saldo_actual:
+                    print("Fondos insuficientes.")
+                else:
+                    # Actualizar el saldo después del retiro
+                    nuevo_saldo = saldo_actual - transeferencia
+                    query_actualizar_saldo = "UPDATE Producto SET saldo = %s WHERE id_producto = %s"
+                    values_actualizar_saldo = (nuevo_saldo, num_cuenta_remitente)
+                    db.execute_query(query_actualizar_saldo, values_actualizar_saldo)
+                    db.connection.commit()
+
+                    query = "UPDATE Producto SET saldo = saldo + %s WHERE id_producto = %s"
+
+                    values = (transeferencia, num_cuenta_destino)
+                    db.execute_query(query, values)
+                    db.connection.commit()
+                    print("Transferencia exitosa")
+
+                    print(f'Nuevo saldo: ${saldo_actual:.0f}')
+            else:
+                print("Producto no encontrado.")
+
+        except Exception as e:
+            print("Error al realizar el retiro:", e)
+        finally:
+            db.disconnect()
+

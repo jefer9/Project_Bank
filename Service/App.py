@@ -40,7 +40,8 @@ class App:
                                        "4. Para salir del aplicativo:\n"
                                        "5. Consignar:\n"
                                        "6. Retirar \n"
-                                       "7. Consultar saldo: "))
+                                       "7. Consultar saldo:\n"
+                                       "8. Tranferir: "))
 
                     if opcion == 1:
                         credito_1 = Credito(None, None, None)
@@ -62,6 +63,9 @@ class App:
                     elif opcion == 7:
                         titular3 = Titular(None, None, None, None, None, None, None, None, None, None)
                         titular3.consultar_saldo()
+                    elif opcion == 8:
+                        titular4 = Titular(None, None, None, None, None, None, None, None, None, None)
+                        titular4.transferir()
             else:
                 print("Autenticación fallida. Por favor, inténtelo de nuevo.")
         elif opcion == 3:
