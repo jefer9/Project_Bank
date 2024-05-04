@@ -38,7 +38,8 @@ class App:
                                        "2. Para crear producto:\n"
                                        "3. lista de usuarios:\n"
                                        "4. Para salir del aplicativo:\n"
-                                       "5. Consignar: "))
+                                       "5. Consignar:\n"
+                                       "6. Retirar "))
 
                     if opcion == 1:
                         credito_1 = Credito(None, None, None)
@@ -54,6 +55,9 @@ class App:
                     elif opcion == 5:
                         titular1 = Titular(None,None,None,None,None,None,None,None,None,None)
                         titular1.consignar()
+                    elif opcion == 6:
+                        titular2 = Titular(None, None, None, None, None, None, None, None, None, None)
+                        titular2.retirar()
             else:
                 print("Autenticación fallida. Por favor, inténtelo de nuevo.")
         elif opcion == 3:
