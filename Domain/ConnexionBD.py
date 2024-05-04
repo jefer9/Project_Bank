@@ -20,21 +20,21 @@ class ConexionBD:
                 passwd=self.passwd,
                 database=self.database
             )
-            print("Conexión a la base de datos Exitosa")
+            # print("Conexión a la base de datos Exitosa")
         except mysql.connector.Error as err:
             print("Error al conectar a la base de datos", err)
 
     def disconnect(self):
         if self.connection:
             self.connection.close()
-            print("Conexion cerrada")
+            # print("Conexion cerrada")
 
     def execute_query(self, query, params=None):
         cursor = self.connection.cursor(buffered=True)
         try:
             cursor.execute(query, params)
             self.connection.commit()
-            print("Consulta ejecutada exitosamente")
+            # print("Consulta ejecutada exitosamente")
             if query.lower().startswith('select'):
                 result = cursor.fetchall()
                 return result

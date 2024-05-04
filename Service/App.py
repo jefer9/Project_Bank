@@ -21,7 +21,7 @@ class App:
                            "\n\t---------------\n"
                            "1. Asesor virtual\n"
                            "2. Iniciar sesion\n"
-                           "3 Salir. "))
+                           "3. Salir. "))
 
         if opcion == 1:
             while True:
@@ -31,7 +31,7 @@ class App:
                                 "3. Buscar Usuario\n"
                                 "4. Modificar Usuario\n"
                                 "5. Eliminar Usuario\n"
-                                "6. Salir\n"))
+                                "6. Salir. "))
                 if opc == 1:
                     asesor.crear_persona()
                 if opc == 2:
@@ -46,7 +46,6 @@ class App:
                     print("\n Gracias por visitar nuestra asesoria virtual")
                     break
 
-
         elif opcion == 2:
             if persona.autenticacion_login():
                 while True:
@@ -54,7 +53,7 @@ class App:
                     print(f"¿Hola que deseas hacer hoy?")
                     opcion = int(input("\n1. Solicitar crédito:\n"
                                        "2. Crear producto:\n"
-                                       "3. Operaciones de cuenta\n"
+                                       "3. Operaciones de cuenta:\n"
                                        "4. Para salir del aplicativo:\n"))
 
                     if opcion == 1:
@@ -70,7 +69,7 @@ class App:
                                             "1. Consignar\n"
                                             "2. Retirar\n"
                                             "3. Consultar saldo\n"
-                                            "4. Transferir"))
+                                            "4. Transferir. "))
                             if opc == 1:
                                 titular1 = Titular(None, None, None, None, None, None, None, None, None, None)
                                 titular1.consignar()

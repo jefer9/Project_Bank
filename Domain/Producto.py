@@ -76,9 +76,3 @@ class Producto(Persona):
     def mostrar_producto(self):
         for i in self.productos.items():
             print(i)
-
-    # **************** crear movimientos ****************
-
-
-
-
