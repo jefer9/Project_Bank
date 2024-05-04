@@ -10,8 +10,24 @@ class Asesor(Producto, Persona):
     def crear_persona(self):
         persona_1 = Persona(None,None,None,None,None,None,None)
         persona_1.crear_persona()
+
+    def buscar_persona(self):
+        persona_2 = Persona(None, None, None, None, None, None, None)
+        persona_2.buscar_persona()
+
+    def modificar_persona(self):
+        persona_3 = Persona(None, None, None, None, None, None, None)
+        persona_3.modificar_persona()
+
+    def eliminar_persona(self):
+        persona_4 = Persona(None, None, None, None, None, None, None)
+        persona_4.eliminar_persona()
     def crear_producto(self):
         producto = Producto(None, None, None, None, None, None, None, None, None,None)
         super().crear_producto()
         return producto
+
+
+
+
 

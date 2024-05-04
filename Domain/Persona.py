@@ -61,6 +61,7 @@ class Persona:
         self._contrasena = contrasena
 
     def crear_persona(self):
+        print("FORMULARIO DE REGISTRO")
         print("Ingresa los siguientes datos: ")
         self._id = input("ID: ")
         self._nombre = input("Nombre: ")
@@ -108,42 +109,93 @@ class Persona:
         finally:
             db.disconnect()
 
-    def buscar_persona(self, id):
-        if id in personas:
-            print("Persona encontrada")
-            print(personas[id])
-        else:
-            print("persona no encontrada")
+    def buscar_persona(self):
+        try:
+            db = ConexionBD(host="localhost", port="3306", user="root", passwd="", database="projectbank")
+            db.connect()
 
-    def buscar_persona(self, id):
-        if id in personas:
-            print("Persona encontrada")
-            print(personas[id])
-        else:
-            print("persona no encontrada")
+            id = input("Ingresa el ID de la persona que deseas buscar: ")
 
-    def modificar_persona(self, id):
-        if id in personas:
-            print("Ingrese los datos que deseas modificar y/o oprima enter si desea dejarlos como estan")
-            nuevo_correo = input("Correo: ")
-            nuevo_telefono = input("Telefono: ")
+            query = "SELECT * FROM Persona WHERE id = %s"
+            values = (id,)
+            result = db.execute_query(query, values)
 
-            # Verifica si los datos no estan vacios antes de actualizarlos
-            if nuevo_correo:
-                personas[id]["Correo"] = nuevo_correo
-            if nuevo_telefono:
-                personas[id]["Telefono"] = nuevo_telefono
+            if result:
+                print("Persona encontrada:")
+                for row in result:
+                    print(row)  # Imprime cada fila de datos
+            else:
+                print("Persona no encontrada")
 
-            print("Datos actualizados exitosamente")
-        else:
-            print("Id no encontrado")
+        except Exception as e:
+            print("Error al buscar la persona:", e)
+        finally:
+            db.disconnect()
 
-    def eliminar_persona(self, id):
-        if id in personas:
-            personas.pop(id)
-            print("Persona eliminada Exitosamente")
-        else:
-            print("persona no encontrada")
+    def modificar_persona(self):
+        try:
+            db = ConexionBD(host="localhost", port="3306", user="root", passwd="", database="projectbank")
+            db.connect()
+
+            id = input("Ingresa el ID de la persona que deseas modificar: ")
+
+            query_select = "SELECT * FROM Persona WHERE id = %s"
+            values_select = (id,)
+            result_select = db.execute_query(query_select, values_select)
+
+            if result_select:
+                print("Persona encontrada. Ingresa los nuevos datos:")
+
+                nuevo_correo = input("Nuevo correo: ")
+                nuevo_telefono = input("Nuevo telefono: ")
+
+                # Verifica si los datos no están vacíos antes de actualizarlos
+                if nuevo_correo:
+                    query_update_correo = "UPDATE Persona SET correo = %s WHERE id = %s"
+                    values_update_correo = (nuevo_correo, id)
+                    db.execute_query(query_update_correo, values_update_correo)
+
+                if nuevo_telefono:
+                    query_update_telefono = "UPDATE Persona SET telefono = %s WHERE id = %s"
+                    values_update_telefono = (nuevo_telefono, id)
+                    db.execute_query(query_update_telefono, values_update_telefono)
+
+                print("Datos actualizados exitosamente")
+            else:
+                print("ID no encontrado")
+
+        except Exception as e:
+            print("Error al modificar la persona:", e)
+        finally:
+            db.disconnect()
+
+    def eliminar_persona(self):
+        try:
+            db = ConexionBD(host="localhost", port="3306", user="root", passwd="", database="projectbank")
+            db.connect()
+
+            id = input("Ingresa el ID de la persona que deseas eliminar: ")
+
+            query_select = "SELECT * FROM Persona WHERE id = %s"
+            values_select = (id,)
+            result_select = db.execute_query(query_select, values_select)
+
+            if result_select:
+                confirmacion = input("¿Estás seguro de que deseas eliminar esta persona? (S/N): ")
+                if confirmacion.upper() == "S":
+                    query_delete = "DELETE FROM Persona WHERE id = %s"
+                    values_delete = (id,)
+                    db.execute_query(query_delete, values_delete)
+                    print("Persona eliminada exitosamente")
+                else:
+                    print("Operación cancelada")
+            else:
+                print("ID no encontrado")
+
+        except Exception as e:
+            print("Error al eliminar la persona:", e)
+        finally:
+            db.disconnect()
 
     # Cree un nuevo metodo para retornar los datos
     def obtener_datos_persona(self, datos_persona):
