@@ -63,7 +63,9 @@ class Producto(Persona):
             values = (self._id_producto, self._nombre_producto, self._saldo)
             db.execute_query(query,values)
             db.connection.commit()
-            print("Producto agregado exitosamente")
+            print(f"Tipo cuenta: {self.nombre_producto}\n"
+                  f"su numero de cuenta es: {self._id_producto}\n"
+                  f"su saldo es: ${self.saldo}")
         except Exception as e:
             print("Error al agregar producto: ",e)
         finally:
@@ -79,31 +81,4 @@ class Producto(Persona):
 
 
 
-    def consignar(self, ):
-        consignacion = int(input("Valor a consignar: "))
-        total = self._saldo + consignacion
-        print("Consignación exitosa. Nuevo saldo:", total)
-        # self.productos[self._id_producto] = {'Saldo' : total}
-
-
-    def retirar(self):
-        retiro = int(input("Ingrese el valor a retirar: "))
-        if retiro > self._saldo:
-            print("Fondos insuficientes")
-        else:
-            self._saldo -= retiro
-            print("retiro completado con exito")
-
-    def consultar_saldo(self):
-        print("su saldo es: ", self._saldo)
-
-    def transferir(self):
-        transeferencia = int(input("Valor a transferir: "))
-        num_cuenta_destino = int(input("Numero de cuenta de destino: "))
-
-        if transeferencia > self._saldo:
-            print("fondos insuficientes")
-        else:
-            # Aqui se hace la suma al numero de cuenta destinatario
-            print("Transeferencia exitosa")
 

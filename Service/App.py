@@ -1,6 +1,6 @@
 from Domain.Persona import Persona,personas
 from Service.Asesor import Asesor
-#from Domain.Titular import Titular
+from Domain.Titular import Titular
 from Domain.Producto import Producto
 from Domain.Credito import Credito
 from Domain.Cuenta_ahorros import Cuenta_ahorros #----------REVISAR
@@ -52,7 +52,8 @@ class App:
                         print("\n\tGracias por visitar nuestra sucursal virtual, hasta pronto!")
                         break
                     elif opcion == 5:
-                        producto.consignar()
+                        titular1 = Titular(None,None,None,None,None,None,None,None,None,None)
+                        titular1.consignar()
             else:
                 print("Autenticación fallida. Por favor, inténtelo de nuevo.")
         elif opcion == 3:
