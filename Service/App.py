@@ -31,7 +31,8 @@ class App:
                                 "3. Buscar Usuario\n"
                                 "4. Modificar Usuario\n"
                                 "5. Eliminar Usuario\n"
-                                "6. Salir. "))
+                                "6. Consultar base de datos\n"
+                                "7. Salir. "))
                 if opc == 1:
                     asesor.crear_persona()
                 if opc == 2:
@@ -43,6 +44,8 @@ class App:
                 if opc == 5:
                     asesor.eliminar_persona()
                 if opc == 6:
+                    asesor.consultar_BD()
+                if opc == 7:
                     print("\n Gracias por visitar nuestra asesoria virtual")
                     break
 
@@ -54,12 +57,11 @@ class App:
                     opcion = int(input("\n1. Solicitar crédito:\n"
                                        "2. Crear producto:\n"
                                        "3. Operaciones de cuenta:\n"
-                                       "4. Para salir del aplicativo:\n"))
+                                       "4. Para salir del aplicativo: "))
 
                     if opcion == 1:
                         credito_1 = Credito(None, None, None,None)
                         credito_1.solicitar_credito()
-                        print(personas)
                     elif opcion == 2:
                         asesor.crear_producto()
                     elif opcion == 3:
@@ -69,7 +71,8 @@ class App:
                                             "1. Consignar\n"
                                             "2. Retirar\n"
                                             "3. Consultar saldo\n"
-                                            "4. Transferir. "))
+                                            "4. Transferir\n"
+                                            "5. Salir. "))
                             if opc == 1:
                                 titular1 = Titular(None, None, None, None, None, None, None, None, None, None)
                                 titular1.consignar()
@@ -82,6 +85,8 @@ class App:
                             if opc == 4:
                                 titular4 = Titular(None, None, None, None, None, None, None, None, None, None)
                                 titular4.transferir()
+                            if opc == 5:
+                                break
                     elif opcion == 4:
                         print("\n\tGracias por visitar nuestra sucursal virtual, hasta pronto!")
                         break

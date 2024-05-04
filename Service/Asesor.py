@@ -1,4 +1,4 @@
-#from Domain.Titular import Titular
+from Domain.Titular import Titular
 from Domain.Producto import Producto
 from Domain.Persona import Persona, personas
 
@@ -26,8 +26,9 @@ class Asesor(Producto, Persona):
         producto = Producto(None, None, None, None, None, None, None, None, None,None)
         super().crear_producto()
         return producto
-
-
+    def consultar_BD(self):
+        titular1 = Titular(None, None, None, None, None, None, None, None, None, None)
+        titular1.consultar_BD()
 
 
 

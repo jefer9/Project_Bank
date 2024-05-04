@@ -45,10 +45,9 @@ class Producto(Persona):
 
     # Métodos propios
     def crear_producto(self):
-        print("Presiona alguna de las opcionesn\n"
-              "1. Ahorros\n"
-              "2. Corriente")
-        valor = int(input())
+        valor = int(input("Presiona alguna de las opcionesn\n"
+                              "1. Ahorros\n"
+                              "2. Corriente. "))
         if valor == 1:
             self.nombre_producto = "Ahorros"
         if valor == 2:

@@ -90,7 +90,7 @@ class Titular(Producto):
                     db.execute_query(query_actualizar_saldo, values_actualizar_saldo)
                     db.connection.commit()
                     print("Retiro exitoso.")
-                    print(f'Nuevo saldo: $ {nuevo_saldo}')
+                    print(f'Nuevo saldo: $ {nuevo_saldo:.0f}')
             else:
                 print("Producto no encontrado.")
 

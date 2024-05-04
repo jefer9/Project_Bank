@@ -41,7 +41,7 @@ class Credito:
         cuota_mensual = (self._cantidad * tasa_periodica * (1 + tasa_periodica) ** n) / ((1 + tasa_periodica) ** n - 1)
 
         # Formatear la cuota mensual para imprimir solo dos decimales
-        cuota_mensual_formateada = "{:.2f}".format(cuota_mensual)
+        cuota_mensual_formateada = "{:.0f}".format(cuota_mensual)
 
 
 
@@ -59,14 +59,3 @@ class Credito:
             print("Error al solicitar credito")
         finally:
             db.disconnect()
-
-
-
-
-
-
-
-
-
-
-
