@@ -44,8 +44,8 @@ class App:
                                        "8. Tranferir: "))
 
                     if opcion == 1:
-                        credito_1 = Credito(None, None, None)
-                        credito_1.solicitar_credito(personas)
+                        credito_1 = Credito(None, None, None,None)
+                        credito_1.solicitar_credito()
                         print(personas)
                     elif opcion == 2:
                         asesor.crear_producto()

@@ -1,6 +1,8 @@
-
+from Domain.ConnexionBD import ConexionBD
+from Domain.Producto import Producto
 class Credito:
-    def __init__(self,plazo, cantidad, cuota):
+    def __init__(self,plazo, cantidad, cuota, id_credito):
+        self.id_credito = id_credito
         self.interes = 0.03
         self._plazo = plazo
         self._cantidad = cantidad
@@ -23,12 +25,11 @@ class Credito:
         self._cantidad = cantidad
 
     # Métodos
-    def solicitar_credito(self, datos_persona):
+    def solicitar_credito(self):
+        self.id_credito = input("Ingrese id credito: ")
         self._cantidad = float(input("Ingrese el monto para crédito: "))
-        datos_persona["Cantidad credito"] = self._cantidad
 
         self._plazo = int(input("Ingrese el plazo en meses para el crédito: "))
-        datos_persona["Plazo"] = self._plazo
 
         # Calcular la tasa de interés periódica (mensual en este caso)
         tasa_periodica = self.interes / 12
@@ -42,11 +43,22 @@ class Credito:
         # Formatear la cuota mensual para imprimir solo dos decimales
         cuota_mensual_formateada = "{:.2f}".format(cuota_mensual)
 
-        # Agregar la cuota mensual al diccionario
-        datos_persona["Cuota Mensual"] = cuota_mensual_formateada
+
 
         print(f"La cuota mensual es: ${cuota_mensual_formateada}")
-        print(datos_persona)
+
+        try:
+            db = ConexionBD(host="localhost", port="3306", user="root", passwd="", database="projectbank")
+            db.connect()
+            query = "INSERT INTO Credito(id_credito, interes, plazo, cantidad) VALUES (%s, %s, %s, %s)"
+            values = (self.id_credito, self.interes, self._plazo, self.cantidad)
+            db.execute_query(query,values)
+            db.connection.commit()
+            print("Credito Aprobado")
+        except Exception as e:
+            print("Error al solicitar credito")
+        finally:
+            db.disconnect()
 
 
 
