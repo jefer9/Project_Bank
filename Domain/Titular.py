@@ -38,7 +38,8 @@ class Titular(Producto):
                 saldo = cuenta_info[0][1]
 
                 pdf.image(
-                'C:\\Users\\Mauricio\\Desktop\\Python_desde_cero\\Project_Bank\\Domain\\imprimir_pdf\\logo4.jpg',
+                #'C:\\Users\\Usuario\\PycharmProjects\\Project_Bank\\Domain',
+                    'C:\\Users\\Usuario\\PycharmProjects\\Project_Bank\\Domain\\logo4.jpg',
                 x=70, y=6,
                 w=70, h=70)
 
